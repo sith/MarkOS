@@ -4,6 +4,6 @@
 
 #include "LinkedListTest.h"
 
-TEST_F(LinkedListTest, SimpleTest) {
-    EXPECT_EQ(true, false);
+TEST_F(LinkedListTest, simpleTest) {
+    EXPECT_EQ(true, true);
 }

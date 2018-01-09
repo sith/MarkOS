@@ -7,3 +7,5 @@ add_library(${PROJECT_NAME}
         src/LinkedList.cpp
         src/LinkedList.h src/Queue.h)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
+
+add_subdirectory(test)
