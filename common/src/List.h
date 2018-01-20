@@ -1,21 +1,26 @@
 //
-// Created by Oleksandra Baukh on 1/7/18.
+// Created by Oleksandra Baukh on 1/19/18.
 //
 
-#ifndef MARKOS_LIST_H
-#define MARKOS_LIST_H
+#ifndef CPP_PLAYGROUND_LIST_H
+#define CPP_PLAYGROUND_LIST_H
 
-namespace common {
-    template<class T>
-    class List {
-    public:
-        virtual void add(T *t)=0;
+#include "Iterator.h"
 
-        virtual T *get(int index)=0;
+template<class T>
+class List {
 
-        virtual T *remove(int index)=0;
+public:
+    virtual void add(T *e)= 0;
 
-        virtual int size()=0;
-    };
-}
-#endif //MARKOS_LIST_H
+    virtual T *remove(int index)= 0;
+
+    virtual T *get(int index)= 0;
+
+    virtual int size()=0;
+
+    virtual Iterator<T> &iterator()=0;
+
+};
+
+#endif //CPP_PLAYGROUND_LIST_H

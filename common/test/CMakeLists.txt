@@ -14,7 +14,6 @@ ExternalProject_Add(
 ExternalProject_Get_Property(gtest source_dir binary_dir)
 
 
-
 add_library(libgtest IMPORTED STATIC GLOBAL)
 add_dependencies(libgtest gtest)
 
@@ -28,8 +27,9 @@ include_directories("${source_dir}/googletest/include"
 
 add_executable(commons_tests
         main.cpp
+        LinkedListTest.h
         LinkedListTest.cpp
-        LinkedListTest.h)
+        )
 target_link_libraries(commons_tests
         common
         libgtest)

@@ -6,10 +6,9 @@
 #define MARKOS_LINKEDLISTTEST_H
 
 #include "gtest/gtest.h"
+#include "LinkedList.h"
 
 class LinkedListTest : public ::testing::Test {
 
 };
-
-
 #endif //MARKOS_LINKEDLISTTEST_H
