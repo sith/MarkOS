@@ -60,6 +60,31 @@ TEST(LinkedListTest, iterator) {
     ASSERT_TRUE(iterator.hasNext());
     ASSERT_EQ(*iterator.next(), six);
     ASSERT_FALSE(iterator.hasNext());
+}
 
+TEST(LinkedListTest, iteratorRemove) {
 
+    LinkedList<int> list;
+    int two = 2;
+    list.add(&two);
+    int four = 4;
+    list.add(&four);
+    int five = 5;
+    list.add(&five);
+    int six = 6;
+    list.add(&six);
+
+    Iterator<int> &iterator = list.iterator();
+    ASSERT_TRUE(iterator.hasNext());
+    ASSERT_EQ(*iterator.next(), two);
+    ASSERT_TRUE(iterator.hasNext());
+    ASSERT_EQ(*iterator.remove(), four);
+    ASSERT_TRUE(iterator.hasNext());
+    ASSERT_EQ(*iterator.next(), five);
+    ASSERT_TRUE(iterator.hasNext());
+    ASSERT_EQ(*iterator.remove(), six);
+    ASSERT_FALSE(iterator.hasNext());
+    ASSERT_EQ(list.size(), 2);
+    ASSERT_EQ(*list.get(0), two);
+    ASSERT_EQ(*list.get(1), five);
 }

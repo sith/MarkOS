@@ -11,6 +11,8 @@ public:
     virtual bool hasNext()= 0;
 
     virtual T *next()= 0;
+
+    virtual T *remove()=0;
 };
 
 #endif //MARKOS_ITERATOR_H
