@@ -14,7 +14,7 @@ void Cycle::next() {
     Iterator<CycleListener> *iterator = &listeners->iterator();
     while (iterator->hasNext()) {
         CycleListener *pListener = iterator->next();
-        pListener->onEven(cycleNumber);
+        pListener->onEvent(cycleNumber);
     }
 }
 

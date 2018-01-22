@@ -1,7 +1,7 @@
 
 add_executable(os_tests
         main.cpp
-        )
+        cycle/CycleTest.cpp cycle/CycleTest.h cycle/MockCycleListener.h)
 #Link with GoogleTest
 target_link_libraries(os_tests os)
 target_link_libraries(os_tests gtest gtest_main)

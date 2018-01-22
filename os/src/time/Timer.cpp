@@ -9,7 +9,7 @@ void Timer::addTimer(int milliseconds, TimerListener &timerListener) {
     tasks->add(new TimerTask(clock->getTime() + milliseconds, &timerListener));
 }
 
-void Timer::onEven(unsigned long cycleNumber) {
+void Timer::onEvent(unsigned long cycleNumber) {
     auto *iterator = &tasks->iterator();
 
     while (iterator->hasNext()) {

@@ -10,7 +10,7 @@
 #include "../logger/LoggerFactory.h"
 #include "../Random.h"
 #include "../time/Clock.h"
-#include "../Cycle.h"
+#include "../cycle/Cycle.h"
 #include "../time/Timer.h"
 
 class Environment {

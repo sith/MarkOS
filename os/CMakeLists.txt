@@ -3,9 +3,9 @@ project(os)
 
 
 add_library(${PROJECT_NAME}
-        src/Cycle.h
-        src/Cycle.cpp
-        src/CycleListener.h
+        src/cycle/Cycle.h
+        src/cycle/Cycle.cpp
+        src/cycle/CycleListener.h
         src/Random.h
         src/controller/Controller.h
         src/controller/Controller.cpp

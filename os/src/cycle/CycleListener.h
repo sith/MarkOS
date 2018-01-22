@@ -8,7 +8,7 @@
 
 class CycleListener {
 public:
-    virtual void onEven(unsigned long cycleNumber)=0;
+    virtual void onEvent(unsigned long cycleNumber)=0;
 };
 
 

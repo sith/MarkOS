@@ -9,7 +9,7 @@
 #include <LinkedList.h>
 #include "TimerListener.h"
 #include "TimerTask.h"
-#include "../CycleListener.h"
+#include "../cycle/CycleListener.h"
 #include "Clock.h"
 
 class Timer : public CycleListener {
@@ -18,7 +18,7 @@ class Timer : public CycleListener {
 public:
     Timer();
 
-    void onEven(unsigned long cycleNumber) override;
+    void onEvent(unsigned long cycleNumber) override;
 
     void addTimer(int milliseconds, TimerListener &timerListener);
 };

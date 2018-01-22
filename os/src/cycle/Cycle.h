@@ -10,7 +10,7 @@
 #include "CycleListener.h"
 
 class Cycle {
-    unsigned long cycleNumber;
+    unsigned long cycleNumber = 0;
     List<CycleListener> *listeners = new LinkedList<CycleListener>();
 public:
     unsigned long getCycle() const;
