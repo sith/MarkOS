@@ -31,10 +31,6 @@ public:
 
     void setClock(Clock *clock);
 
-    Timer *getTimer() const;
-
-    void setTimer(Timer *timer);
-
     LoggerFactory *getLoggerFactory() const;
 
     void setLoggerFactory(LoggerFactory &loggerFactory);
@@ -49,6 +45,9 @@ public:
 
     Cycle &getCycle();
 
+    Timer *getTimer() const;
+
+    void setTimer(Timer *timer);
 
 };
 

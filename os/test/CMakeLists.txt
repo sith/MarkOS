@@ -1,7 +1,13 @@
 
 add_executable(os_tests
         main.cpp
-        cycle/CycleTest.cpp cycle/CycleTest.h cycle/MockCycleListener.h)
+        cycle/CycleTest.cpp
+        cycle/CycleTest.h
+        cycle/MockCycleListener.h
+        modes/test/TestModeTest.cpp
+        modes/test/TestModeTest.h
+        statemachine/StateMachineTest.cpp
+        statemachine/StateMachineTest.h time/TimerTest.cpp time/TimerTest.h time/MockClock.h time/MockTimerListener.h time/SimpleTest.cpp time/SimpleTest.h)
 #Link with GoogleTest
 target_link_libraries(os_tests os)
 target_link_libraries(os_tests gtest gtest_main)

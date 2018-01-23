@@ -13,7 +13,10 @@
 
 class CycleTest : public ::testing::Test {
 protected:
+    Cycle cycle;
+
     void SetUp() {
+        cycle = *new Cycle;
     };
 };
 

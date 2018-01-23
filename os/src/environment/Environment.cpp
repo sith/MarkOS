@@ -42,6 +42,13 @@ void Environment::setClock(Clock *clock) {
     Environment::clock = clock;
 }
 
+Cycle &Environment::getCycle() {
+    return cycle;
+}
+
+Environment::Environment() : cycle(*new Cycle) {
+}
+
 Timer *Environment::getTimer() const {
     return timer;
 }
@@ -50,9 +57,3 @@ void Environment::setTimer(Timer *timer) {
     Environment::timer = timer;
 }
 
-Cycle &Environment::getCycle() {
-    return cycle;
-}
-
-Environment::Environment() : cycle(*new Cycle) {
-}

@@ -12,9 +12,7 @@ class NoopState : public State{
 public:
     State &execute() override;
 
-    void cancel() override;
-
-    void reset() override;
+    void stop() override;
 };
 
 

@@ -31,6 +31,12 @@ class LinkedList : public List<T> {
         if (next != nullptr) {
             next->prev = previous;
         }
+
+        if (previous == nullptr && next == nullptr) {
+            left = nullptr;
+            right = nullptr;
+        }
+
         length--;
     }
 
@@ -91,21 +97,22 @@ public:
 
     class LinkedListIterator : public Iterator<T> {
         Node *currentNode;
+        Node *nextNode;
         LinkedList &list;
 
     public:
-        explicit LinkedListIterator(LinkedList &pList) : currentNode(pList.right), list(pList) {
-
+        explicit LinkedListIterator(LinkedList &pList) : nextNode(pList.right), list(pList) {
         }
 
         bool hasNext() override {
-            return currentNode != nullptr;
+            return nextNode != nullptr;
         }
 
         T *next() override {
+            currentNode = nextNode;
             if (currentNode != nullptr) {
                 T *data = currentNode->data;
-                currentNode = currentNode->next;
+                nextNode = currentNode->next;
                 return data;
             } else {
                 return nullptr;
@@ -118,7 +125,7 @@ public:
             }
             T *data = currentNode->data;
             list.removeNode(currentNode);
-            currentNode = currentNode->next;
+            currentNode = nextNode;
             return data;
         }
     };

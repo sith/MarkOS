@@ -8,10 +8,6 @@ State &NoopState::execute() {
     return *this;
 }
 
-void NoopState::cancel() {
-
-}
-
-void NoopState::reset() {
+void NoopState::stop() {
 
 }

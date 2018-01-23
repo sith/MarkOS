@@ -8,12 +8,10 @@
 using ::testing::Return;
 using ::testing::Exactly;
 
-TEST(CycleTest, cycleTest) {
+TEST_F(CycleTest, cycleTest) {
     MockCycleListener cycleListener;
     EXPECT_CALL(cycleListener, onEvent(1)).Times(Exactly(1));
     EXPECT_CALL(cycleListener, onEvent(2)).Times(Exactly(1));
-
-    Cycle cycle = *new Cycle;
     cycle.getListeners()->add(&cycleListener);
     cycle.next();
     ASSERT_EQ(cycle.getCycle(), 1);

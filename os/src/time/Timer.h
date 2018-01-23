@@ -16,7 +16,7 @@ class Timer : public CycleListener {
     List<TimerTask> *tasks = new LinkedList<TimerTask>();
     Clock *clock;
 public:
-    Timer();
+    Timer(Clock *clock);
 
     void onEvent(unsigned long cycleNumber) override;
 

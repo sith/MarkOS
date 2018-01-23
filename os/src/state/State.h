@@ -22,9 +22,7 @@ public:
 
     virtual State &execute()= 0;
 
-    virtual void cancel()=0;
-
-    virtual void reset()=0;
+    virtual void stop()=0;
 };
 
 class EmptyStateValue {

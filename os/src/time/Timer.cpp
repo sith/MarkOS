@@ -22,4 +22,4 @@ void Timer::onEvent(unsigned long cycleNumber) {
     }
 }
 
-Timer::Timer() : clock(Environment::getEnvironment().getClock()) {}
+Timer::Timer(Clock *clock) : clock(clock) {}

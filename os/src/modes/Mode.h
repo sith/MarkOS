@@ -5,6 +5,8 @@
 #ifndef MARK1_MODE_H
 #define MARK1_MODE_H
 
+#include "ModeName.h"
+
 class Mode {
     ModeName &modeName;
 public:
@@ -17,6 +19,7 @@ public:
     ModeName &getModeName() const;
 
     const char *getModeNameString();
+
     static const char *getModeNameString(ModeName &modeName);
 };
 

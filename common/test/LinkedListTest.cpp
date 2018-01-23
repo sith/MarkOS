@@ -88,3 +88,15 @@ TEST(LinkedListTest, iteratorRemove) {
     ASSERT_EQ(*list.get(0), two);
     ASSERT_EQ(*list.get(1), five);
 }
+
+TEST(LinkedListTest, removeWorksForIterator) {
+    LinkedList<int> list;
+    int one = 1;
+    list.add(&one);
+
+    Iterator<int> &iterator = list.iterator();
+    iterator.remove();
+    auto &newIterator = list.iterator();
+    ASSERT_FALSE(newIterator.hasNext());
+    ASSERT_EQ(list.iterator().next(), nullptr);
+}
