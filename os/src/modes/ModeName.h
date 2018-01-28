@@ -4,11 +4,11 @@
 
 #ifndef MARK1_MODENAME_H
 #define MARK1_MODENAME_H
-enum class ModeName {
+enum ModeName {
     NONE,
-    CALIBRATION,
-    FREE_RUN,
     SUPERVISED,
+    FREE_RUN,
+    CALIBRATION,
     FIXED_ROUTE,
     EXPLORER,
     TEST

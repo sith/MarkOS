@@ -62,6 +62,18 @@ TEST(LinkedListTest, iterator) {
     ASSERT_FALSE(iterator.hasNext());
 }
 
+
+TEST(LinkedListTest, iteratorSingleRemove) {
+    LinkedList<int> list;
+    int two = 2;
+    list.add(&two);
+    int *value = list.iterator().remove();
+
+    ASSERT_EQ(*value, two);
+    ASSERT_EQ(list.size(),0);
+
+}
+
 TEST(LinkedListTest, iteratorRemove) {
 
     LinkedList<int> list;
@@ -77,16 +89,27 @@ TEST(LinkedListTest, iteratorRemove) {
     Iterator<int> &iterator = list.iterator();
     ASSERT_TRUE(iterator.hasNext());
     ASSERT_EQ(*iterator.next(), two);
+
     ASSERT_TRUE(iterator.hasNext());
-    ASSERT_EQ(*iterator.remove(), four);
+    ASSERT_EQ(*iterator.remove(), two);
+
+    ASSERT_TRUE(iterator.hasNext());
+    ASSERT_EQ(*iterator.next(), four);
+
     ASSERT_TRUE(iterator.hasNext());
     ASSERT_EQ(*iterator.next(), five);
+
     ASSERT_TRUE(iterator.hasNext());
-    ASSERT_EQ(*iterator.remove(), six);
+    ASSERT_EQ(*iterator.remove(), five);
+
+    ASSERT_TRUE(iterator.hasNext());
+    ASSERT_EQ(*iterator.next(), six);
+
     ASSERT_FALSE(iterator.hasNext());
+
     ASSERT_EQ(list.size(), 2);
     ASSERT_EQ(*list.get(0), two);
-    ASSERT_EQ(*list.get(1), five);
+    ASSERT_EQ(*list.get(1), four);
 }
 
 TEST(LinkedListTest, removeWorksForIterator) {

@@ -1,7 +1,3 @@
-//
-// Created by Oleksandra Baukh on 1/17/18.
-//
-
 #include "ModeManager.h"
 #include "ModeName.h"
 #include "../environment/Environment.h"
@@ -12,13 +8,22 @@ void ModeManager::onModeChange(ModeName mode) {
     if (currentMode->getModeName() == mode) {
         return;
     }
+    deleteCurrentMode();
     switch (mode) {
+        case ModeName::CALIBRATION:
+            break;
+        case ModeName::FREE_RUN:
+            break;
+        case ModeName::SUPERVISED:
+            break;
+        case ModeName::FIXED_ROUTE:
+            break;
+        case ModeName::EXPLORER:
+            break;
         case ModeName::TEST:
-            currentMode->stop();
             currentMode = new TestMode;
             break;
         case ModeName::NONE:
-            currentMode->stop();
             currentMode = new NoopMode;
             break;
         default:
@@ -26,8 +31,22 @@ void ModeManager::onModeChange(ModeName mode) {
     }
 }
 
-ModeManager::ModeManager() : logger(&Environment::getEnvironment().getLoggerFactory()->createLogger("ModeManager")) {}
+void ModeManager::deleteCurrentMode() {
+    logger->newLine()->logAppend("Delete mode: ")->logAppend(currentMode->getModeNameString());
+    delete currentMode;
+    currentMode = nullptr;
+}
 
-Mode *ModeManager::getCurrentMode() const {
-    return currentMode;
+ModeManager::ModeManager() : currentMode(new NoopMode),
+                             logger(logger = Environment::getEnvironment().getLoggerFactory()->createLogger(
+                                     "ModeManager")) {
+}
+
+Mode &ModeManager::getCurrentMode() const {
+    return *currentMode;
+}
+
+ModeManager::~ModeManager() {
+    delete currentMode;
+    delete logger;
 }

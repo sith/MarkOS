@@ -13,11 +13,10 @@ using ::testing::Exactly;
 void TimerTest::SetUp() {
     clock = new MockClock;
     timer = new Timer(clock);
-    auto environment = *new Environment;
+    auto environment = Environment::getEnvironment();
     environment.setClock(clock);
     environment.setTimer(timer);
     environment.getCycle().getListeners()->add(timer);
-    Environment::setEnvironment(environment);
 }
 
 TEST_F(TimerTest, testAddTimer) {

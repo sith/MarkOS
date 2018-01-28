@@ -1,10 +1,5 @@
-//
-// Created by Oleksandra Baukh on 1/16/18.
-//
-
 #ifndef MARK1_CONTROLLER_H
 #define MARK1_CONTROLLER_H
-
 
 #include "../modes/EmptyModeListener.h"
 

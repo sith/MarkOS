@@ -8,7 +8,7 @@
 
 Mode::Mode(ModeName modeName) : modeName(modeName) {}
 
-ModeName &Mode::getModeName() const {
+ModeName &Mode::getModeName() {
     return modeName;
 }
 
@@ -35,4 +35,8 @@ const char *Mode::getModeNameString(ModeName &modeName) {
         default:
             return "NotDefined";
     }
+}
+
+Mode::~Mode() {
+
 }

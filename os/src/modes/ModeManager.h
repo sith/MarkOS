@@ -10,12 +10,17 @@
 #include "../logger/Logger.h"
 
 class ModeManager : public ModeListener {
-    Mode *currentMode = new NoopMode;
+    Mode *currentMode;
     Logger *logger;
+
+    void deleteCurrentMode();
+
 public:
     ModeManager();
 
-    Mode *getCurrentMode() const;
+    virtual ~ModeManager();
+
+    Mode &getCurrentMode() const;
 
     void onModeChange(ModeName mode) override;
 };

@@ -21,4 +21,4 @@ void PrintState::stop() {
 
 
 PrintState::PrintState() : logger(
-        &Environment::getEnvironment().getLoggerFactory()->createLogger("PrintState")) {}
+        Environment::getEnvironment().getLoggerFactory()->createLogger("PrintState")) {}

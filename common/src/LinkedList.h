@@ -36,7 +36,7 @@ class LinkedList : public List<T> {
             left = nullptr;
             right = nullptr;
         }
-
+        delete node;
         length--;
     }
 
@@ -75,14 +75,6 @@ public:
     }
 
 
-    T *remove(int index) override {
-        Node *node = findNode(index);
-        removeNode(node);
-        T *data = node->data;
-        return data;
-    }
-
-
     T *get(int index) override {
         Node *pNode = findNode(index);
         if (pNode == nullptr) {
@@ -91,8 +83,16 @@ public:
         return pNode->data;
     }
 
+
     Iterator<T> &iterator() override {
         return *new LinkedListIterator(*this);
+    }
+
+    T *remove(int index) override {
+        Node *node = findNode(index);
+        T *data = node->data;
+        removeNode(node);
+        return data;
     }
 
     class LinkedListIterator : public Iterator<T> {
@@ -101,7 +101,7 @@ public:
         LinkedList &list;
 
     public:
-        explicit LinkedListIterator(LinkedList &pList) : nextNode(pList.right), list(pList) {
+        explicit LinkedListIterator(LinkedList &pList) : currentNode(pList.right), nextNode(pList.right), list(pList) {
         }
 
         bool hasNext() override {
@@ -110,9 +110,9 @@ public:
 
         T *next() override {
             currentNode = nextNode;
-            if (currentNode != nullptr) {
-                T *data = currentNode->data;
-                nextNode = currentNode->next;
+            if (nextNode != nullptr) {
+                T *data = nextNode->data;
+                nextNode = nextNode->next;
                 return data;
             } else {
                 return nullptr;
@@ -124,8 +124,8 @@ public:
                 return nullptr;
             }
             T *data = currentNode->data;
+            nextNode = currentNode->next;
             list.removeNode(currentNode);
-            currentNode = nextNode;
             return data;
         }
     };

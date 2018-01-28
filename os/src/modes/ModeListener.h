@@ -9,15 +9,8 @@
 #include "Mode.h"
 
 class ModeListener {
-protected:
-    Mode *currentMode = new NoopMode;
 public:
     virtual void onModeChange(ModeName mode)= 0;
-
-    Mode *getCurrentMode() const {
-        return currentMode;
-    }
-
 };
 
 #endif //MARK1_MODELISTENER_H

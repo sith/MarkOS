@@ -25,19 +25,17 @@ public:
     Environment();
 
 public:
-    static void setEnvironment(Environment &environment);
-
     Clock *getClock() const;
 
     void setClock(Clock *clock);
 
     LoggerFactory *getLoggerFactory() const;
 
-    void setLoggerFactory(LoggerFactory &loggerFactory);
+    void setLoggerFactory(LoggerFactory *loggerFactory);
 
     static Environment &getEnvironment();
 
-    void setController(Controller &controller);
+    void setController(Controller *controller);
 
     Random *getRandom() const;
 

@@ -8,15 +8,15 @@
 #include "ModeName.h"
 
 class Mode {
-    ModeName &modeName;
+    ModeName modeName;
 public:
     Mode(ModeName modeName);
 
+    virtual ~Mode() = 0;
+
     virtual const void process()=0;
 
-    virtual const void stop()=0;
-
-    ModeName &getModeName() const;
+    ModeName &getModeName();
 
     const char *getModeNameString();
 
@@ -29,9 +29,6 @@ public:
     }
 
     NoopMode() : Mode(ModeName::NONE) {};
-
-    const void stop() override {
-    }
 };
 
 #endif //MARK1_MODE_H

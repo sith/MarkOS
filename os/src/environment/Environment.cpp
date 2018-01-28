@@ -10,20 +10,16 @@ Environment &Environment::getEnvironment() {
     return environment;
 }
 
-void Environment::setEnvironment(Environment &environment) {
-    Environment::environment = environment;
-}
-
-void Environment::setController(Controller &controller) {
-    Environment::controller = &controller;
+void Environment::setController(Controller *controller) {
+    Environment::controller = controller;
 }
 
 LoggerFactory *Environment::getLoggerFactory() const {
     return loggerFactory;
 }
 
-void Environment::setLoggerFactory(LoggerFactory &loggerFactory) {
-    Environment::loggerFactory = &loggerFactory;
+void Environment::setLoggerFactory(LoggerFactory *loggerFactory) {
+    Environment::loggerFactory = loggerFactory;
 }
 
 Random *Environment::getRandom() const {

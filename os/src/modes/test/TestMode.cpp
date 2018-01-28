@@ -1,3 +1,4 @@
+#include <environment/Environment.h>
 #include "TestMode.h"
 #include "PrintState.h"
 #include "WaitState.h"
@@ -6,24 +7,29 @@
 #include "../../state/DirectTransition.h"
 
 const void TestMode::process() {
-    next();
 }
 
-const void TestMode::stop() {
-    return stopStateMachine();
+TestMode::TestMode() : Mode(ModeName::TEST),
+                       logger(Environment::getEnvironment().getLoggerFactory()->createLogger("TestMode")) {
+    logger->newLine()->logAppend("Started");
 }
 
-TestMode::TestMode() : Mode(ModeName::TEST), StateMachine(), state(new NoopState) {
+TestMode::~TestMode() {
+    delete logger;
 }
+/*
 
 State *TestMode::init() {
-    auto *printState = new PrintState();
-    stopableStates->add(printState);
+   auto *printState = new PrintState();
+     stopableStates->add(printState);
 
-    auto *waitState = new WaitState(1000);
-    stopableStates->add(waitState);
+     auto *waitState = new WaitState(1000);
+     stopableStates->add(waitState);
 
-    printState->setTransitionFunction(new DirectTransition(*waitState));
-    waitState->setTransitionFunction(new DirectTransition(*printState));
-    return printState;
+     printState->setTransitionFunction(new DirectTransition(*waitState));
+     waitState->setTransitionFunction(new DirectTransition(*printState));
+     return printState;*//*
+
+    return new NoopState;
 }
+*/

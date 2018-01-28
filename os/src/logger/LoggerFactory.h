@@ -9,7 +9,7 @@
 
 class LoggerFactory {
 public:
-    virtual Logger &createLogger(const char *name)= 0;
+    virtual Logger *createLogger(const char *name)= 0;
 };
 
 #endif //MARK1_LOGGERFACTORY_H
