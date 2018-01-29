@@ -8,3 +8,6 @@ add_library(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 
 add_subdirectory(test)
+
+install(DIRECTORY "src/"
+        DESTINATION "/tmp/common")
