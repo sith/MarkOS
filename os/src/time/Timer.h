@@ -14,13 +14,18 @@
 
 class Timer : public CycleListener {
     List<TimerTask> *tasks = new LinkedList<TimerTask>();
-    Clock *clock;
+    Clock &clock;
 public:
-    Timer(Clock *clock);
+    Timer(Clock &clock);
+
+    virtual ~Timer();
 
     void onEvent(unsigned long cycleNumber) override;
 
     void addTimer(int milliseconds, TimerListener &timerListener);
+
+    void removeTasksForListener(TimerListener &timerListener);
+
 };
 
 

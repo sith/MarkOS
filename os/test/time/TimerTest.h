@@ -13,11 +13,8 @@
 class TimerTest : public ::testing::Test {
 protected:
     void SetUp() override;
-
     Timer *timer;
     MockClock *clock;
-
-
 };
 
 

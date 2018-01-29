@@ -17,8 +17,9 @@ State *StateMachine::getCurrentState() const {
 }
 
 void StateMachine::stopStateMachine() {
-    Iterator<State> *iterator = &stopableStates->iterator();
+    Iterator<State> *iterator = stopableStates->iterator();
     while (iterator->hasNext()) {
         iterator->next()->stop();
     }
+    delete iterator;
 }

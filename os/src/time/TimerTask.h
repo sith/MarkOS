@@ -18,8 +18,6 @@ public:
     TimerTask(long time, TimerListener *listener);
 
     bool isDone(long currentTime);
-
-
 };
 
 

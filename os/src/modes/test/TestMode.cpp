@@ -17,19 +17,3 @@ TestMode::TestMode() : Mode(ModeName::TEST),
 TestMode::~TestMode() {
     delete logger;
 }
-/*
-
-State *TestMode::init() {
-   auto *printState = new PrintState();
-     stopableStates->add(printState);
-
-     auto *waitState = new WaitState(1000);
-     stopableStates->add(waitState);
-
-     printState->setTransitionFunction(new DirectTransition(*waitState));
-     waitState->setTransitionFunction(new DirectTransition(*printState));
-     return printState;*//*
-
-    return new NoopState;
-}
-*/

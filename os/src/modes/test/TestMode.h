@@ -13,7 +13,6 @@
 
 class TestMode : public Mode {
 private:
-    State *state;
     Logger *logger;
 public:
     TestMode();
