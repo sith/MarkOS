@@ -7,7 +7,6 @@
 
 
 #include <gtest/gtest.h>
-#include "../../src/state/StateMachine.h"
 
 class StateMachineTest : public ::testing::Test {
 protected:

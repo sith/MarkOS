@@ -7,6 +7,7 @@
 
 
 #include <LinkedList.h>
+#include <logger/Logger.h>
 #include "TimerListener.h"
 #include "TimerTask.h"
 #include "../cycle/CycleListener.h"
@@ -15,6 +16,7 @@
 class Timer : public CycleListener {
     List<TimerTask> *tasks = new LinkedList<TimerTask>();
     Clock &clock;
+    Logger *logger;
 public:
     Timer(Clock &clock);
 

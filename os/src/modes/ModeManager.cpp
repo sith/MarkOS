@@ -38,7 +38,7 @@ void ModeManager::deleteCurrentMode() {
 }
 
 ModeManager::ModeManager() : currentMode(new NoopMode),
-                             logger(logger = Environment::getEnvironment().getLoggerFactory()->createLogger(
+                             logger(Environment::getEnvironment().getLoggerFactory()->createLogger(
                                      "ModeManager")) {
 }
 

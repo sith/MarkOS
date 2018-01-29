@@ -6,6 +6,7 @@
 #include "../environment/Environment.h"
 
 void Timer::addTimer(int milliseconds, TimerListener &timerListener) {
+    logger->newLine()->logAppend("New timer task is accepted. Delay: ")->logAppend(milliseconds);
     tasks->add(new TimerTask(clock.getTime() + milliseconds, &timerListener));
 }
 
@@ -15,6 +16,7 @@ void Timer::onEvent(unsigned long cycleNumber) {
     while (iterator->hasNext()) {
         auto timerTask = iterator->next();
         if (timerTask->isDone(currentTime)) {
+            logger->newLine()->logAppend("Task is done.");
             timerTask->getListener()->onEvent();
             delete iterator->remove();
         }
@@ -22,7 +24,8 @@ void Timer::onEvent(unsigned long cycleNumber) {
     delete iterator;
 }
 
-Timer::Timer(Clock &clock) : clock(clock) {}
+Timer::Timer(Clock &clock) : clock(clock),
+                             logger(Environment::getEnvironment().getLoggerFactory()->createLogger("Timer")) {}
 
 Timer::~Timer() {
     delete tasks;

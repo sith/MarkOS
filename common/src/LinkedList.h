@@ -5,7 +5,6 @@
 #ifndef CPP_PLAYGROUND_LINKEDLIST_H
 #define CPP_PLAYGROUND_LINKEDLIST_H
 
-#include <iostream>
 #include "List.h"
 
 template<class T>

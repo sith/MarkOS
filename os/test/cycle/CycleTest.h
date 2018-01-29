@@ -7,8 +7,8 @@
 
 
 #include <gtest/gtest.h>
+#include <cycle/Cycle.h>
 
-#include "../../src/cycle/Cycle.h"
 #include "MockCycleListener.h"
 
 class CycleTest : public ::testing::Test {

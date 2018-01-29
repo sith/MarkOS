@@ -7,12 +7,14 @@
 
 
 #include <gtest/gtest.h>
-#include "../../src/time/Timer.h"
 #include "MockClock.h"
 
 class TimerTest : public ::testing::Test {
 protected:
     void SetUp() override;
+
+    void TearDown() override;
+
     Timer *timer;
     MockClock *clock;
 };

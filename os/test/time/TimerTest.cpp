@@ -19,6 +19,12 @@ void TimerTest::SetUp() {
     environment.getCycle().getListeners()->add(timer);
 }
 
+void TimerTest::TearDown() {
+    Test::TearDown();
+    delete timer;
+    delete clock;
+}
+
 TEST_F(TimerTest, addTimer) {
 
     EXPECT_CALL(*clock, getTime())

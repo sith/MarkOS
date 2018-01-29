@@ -48,4 +48,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)
 
 install(DIRECTORY "src/"
-        DESTINATION "/tmp/os")
+        DESTINATION "/Users/oleksandrabaukh/workspace/myLibs/MarkOS_os")

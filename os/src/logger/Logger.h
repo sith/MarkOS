@@ -9,6 +9,8 @@
 class Logger {
 private:
 public:
+    virtual ~Logger() {}
+
     virtual Logger *logAppend(const char *c)= 0;
 
     virtual Logger *logAppend(int number)= 0;

@@ -7,6 +7,12 @@
 #include "../../state/DirectTransition.h"
 
 const void TestMode::process() {
+    if (startNewTimer) {
+        logger->newLine()->logAppend("Start new timer with delay: ")->logAppend(delayInMilliSeconds)->logAppend("ms");
+        Environment::getEnvironment().getTimer()->addTimer(delayInMilliSeconds, *this);
+        startNewTimer = false;
+        delayInMilliSeconds *= 2;
+    }
 }
 
 TestMode::TestMode() : Mode(ModeName::TEST),
@@ -16,4 +22,8 @@ TestMode::TestMode() : Mode(ModeName::TEST),
 
 TestMode::~TestMode() {
     delete logger;
+}
+
+void TestMode::onEvent() {
+    startNewTimer = true;
 }

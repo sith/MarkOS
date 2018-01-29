@@ -6,7 +6,7 @@
 #define MARKOS_TESTMODETEST_H
 
 #include <gtest/gtest.h>
-#include "../../../src/modes/test/TestMode.h"
+#include <modes/test/TestMode.h>
 
 class TestModeTest : public ::testing::Test {
 protected:
