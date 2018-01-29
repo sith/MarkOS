@@ -11,6 +11,9 @@ template<class T>
 class List {
 
 public:
+
+    virtual ~List() {};
+
     virtual void add(T *e)= 0;
 
     virtual T *remove(int index)= 0;
@@ -19,8 +22,7 @@ public:
 
     virtual int size()=0;
 
-    virtual Iterator<T> &iterator()=0;
-
+    virtual Iterator<T> *iterator()=0;
 };
 
 #endif //CPP_PLAYGROUND_LIST_H

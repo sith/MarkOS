@@ -5,6 +5,7 @@
 #ifndef CPP_PLAYGROUND_LINKEDLIST_H
 #define CPP_PLAYGROUND_LINKEDLIST_H
 
+#include <iostream>
 #include "List.h"
 
 template<class T>
@@ -23,19 +24,26 @@ class LinkedList : public List<T> {
         if (node == nullptr) {
             return;
         }
-        Node *previous = node->prev;
-        Node *next = node->next;
-        if (previous != nullptr) {
-            previous->next = next;
-        }
-        if (next != nullptr) {
-            next->prev = previous;
+
+        if (node == left) {
+            left = node->next;
+        } else {
+            Node *previous = node->prev;
+            Node *next = node->next;
+            if (previous != nullptr) {
+                previous->next = next;
+            }
+            if (next != nullptr) {
+                next->prev = previous;
+            }
+
+            if (previous == nullptr && next == nullptr) {
+                left = nullptr;
+                right = nullptr;
+            }
         }
 
-        if (previous == nullptr && next == nullptr) {
-            left = nullptr;
-            right = nullptr;
-        }
+
         delete node;
         length--;
     }
@@ -46,7 +54,7 @@ class LinkedList : public List<T> {
         }
 
         int startIndex = 0;
-        Node *currentNode = right;
+        Node *currentNode = left;
         while (startIndex != index) {
             currentNode = currentNode->next;
             startIndex++;
@@ -58,15 +66,20 @@ public:
 
 
     void add(T *e) override {
-        if (left == nullptr && right == nullptr) {
-            left = new Node(e);
-            right = left;
-        } else {
-            auto *node = new Node(e);
-            node->prev = left;
-            left->next = node;
-            left = node;
+
+        Node *node = new Node(e);
+
+        if (right != nullptr) {
+            right->next = node;
+            node->prev = right;
+            right = node;
         }
+
+        if (left == nullptr) {
+            left = node;
+            right = node;
+        }
+
         length++;
     }
 
@@ -84,8 +97,8 @@ public:
     }
 
 
-    Iterator<T> &iterator() override {
-        return *new LinkedListIterator(*this);
+    Iterator<T> *iterator() override {
+        return new LinkedListIterator(*this);
     }
 
     T *remove(int index) override {
@@ -101,7 +114,7 @@ public:
         LinkedList &list;
 
     public:
-        explicit LinkedListIterator(LinkedList &pList) : currentNode(pList.right), nextNode(pList.right), list(pList) {
+        explicit LinkedListIterator(LinkedList &pList) : currentNode(pList.left), nextNode(pList.left), list(pList) {
         }
 
         bool hasNext() override {
