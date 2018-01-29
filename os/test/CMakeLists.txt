@@ -14,9 +14,11 @@ add_executable(os_tests
         time/MockTimerListener.h
         modes/ModeManagerTest.h
         modes/ModeManagerTest.cpp
-        emulator/logger/StdOutLogger.cpp emulator/logger/StdOutLogger.h emulator/logger/StdOutLoggerFactory.cpp emulator/logger/StdOutLoggerFactory.h)
+        )
+
+target_link_libraries(os_tests emulator_lib)
+
 #Link with GoogleTest
-target_link_libraries(os_tests os)
 target_link_libraries(os_tests gtest gtest_main)
 #Link with GoogleMock
 target_link_libraries(os_tests gmock gmock_main)

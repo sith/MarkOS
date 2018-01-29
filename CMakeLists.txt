@@ -15,4 +15,6 @@ include_directories(googletest-master/googlemock/include)
 
 add_subdirectory(common)
 add_subdirectory(os)
+add_subdirectory(emulator_lib)
+add_subdirectory(emulator_app)
 

@@ -9,7 +9,7 @@
 #include <gtest/gtest.h>
 #include <modes/ModeManager.h>
 #include <environment/Environment.h>
-#include "../emulator/logger/StdOutLoggerFactory.h"
+#include <logger/StdOutLoggerFactory.h>
 
 class ModeManagerTest : public ::testing::Test {
 protected:
