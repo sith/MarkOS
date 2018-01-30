@@ -7,6 +7,8 @@
 
 class Clock {
 public:
+    virtual ~Clock() {}
+
     virtual long getTime()= 0;
 };
 

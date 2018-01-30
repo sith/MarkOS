@@ -8,9 +8,19 @@
 
 
 long SystemClock::getTime() {
-    time_t *a;
-    time(a);
-    time_t vlue = *a;
-    delete a;
-    return vlue;
+    time_t *currentTime = nullptr;
+    time(currentTime);
+    time_t value = *currentTime - *startTime;
+    delete currentTime;
+    return value;
+}
+
+SystemClock::~SystemClock() {
+    delete startTime;
+}
+
+SystemClock::SystemClock() {
+    time(startTime);
+
+
 }

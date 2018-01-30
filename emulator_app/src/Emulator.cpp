@@ -8,8 +8,6 @@
 #include <clock/SystemClock.h>
 #include <iostream>
 
-void someMethod();
-
 void setup() {
 
     SystemClock *systemClock = new SystemClock;
@@ -27,27 +25,12 @@ void loop() {
 
 int main(int argc, char **argv) {
 
-/*
+    setup();
+
+
     while (true) {
         loop();
-    }*/
-
-/*
-
-    SystemClock clock;
-
-    std::cout << clock.getTime();
-*/
-
-    std::string name;
-    if (std::cin.peek()) {
-        getline(std::cin, name);
-
-        if (!name.empty()) {
-            std::cout << name;
-        }
     }
-
 
     return 0;
 }

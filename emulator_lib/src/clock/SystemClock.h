@@ -7,10 +7,16 @@
 
 
 #include <time/Clock.h>
+#include <ctime>
 
-class SystemClock : public Clock{
+class SystemClock : public Clock {
+    time_t *startTime;
 public:
+    SystemClock();
+
     long getTime() override;
+
+    virtual ~SystemClock();
 };
 
 
