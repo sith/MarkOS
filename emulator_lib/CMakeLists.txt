@@ -6,7 +6,7 @@ add_library(${PROJECT_NAME}
         src/logger/StdOutLogger.cpp
         src/logger/StdOutLoggerFactory.h
         src/logger/StdOutLoggerFactory.cpp
-        )
+        src/clock/SystemClock.cpp src/clock/SystemClock.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
