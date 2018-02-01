@@ -10,7 +10,7 @@
 #include <ctime>
 
 class SystemClock : public Clock {
-    time_t *startTime;
+    time_t startTime;
 public:
     SystemClock();
 

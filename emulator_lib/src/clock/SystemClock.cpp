@@ -8,19 +8,15 @@
 
 
 long SystemClock::getTime() {
-    time_t *currentTime = nullptr;
-    time(currentTime);
-    time_t value = *currentTime - *startTime;
-    delete currentTime;
+    time_t currentTime;
+    time(&currentTime);
+    time_t value = currentTime - startTime;
     return value;
 }
 
 SystemClock::~SystemClock() {
-    delete startTime;
 }
 
 SystemClock::SystemClock() {
-    time(startTime);
-
-
+    time(&startTime);
 }

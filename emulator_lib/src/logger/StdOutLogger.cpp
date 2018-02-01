@@ -21,7 +21,7 @@ Logger *StdOutLogger::logAppend(long number) {
 }
 
 Logger *StdOutLogger::newLine() {
-    std::cout << "\n" << name << ": ";
+    std::cout << "\n" << cycle << ":" << name << ": ";
     return this;
 }
 
@@ -31,4 +31,8 @@ StdOutLogger::StdOutLogger(const char *name) : name(name) {
 
 StdOutLogger::~StdOutLogger() {
     delete name;
+}
+
+void StdOutLogger::onEvent(unsigned long cycleNumber) {
+    cycle = cycleNumber;
 }

@@ -1,36 +1,37 @@
 #include <iostream>
 #include <List.h>
 #include <LinkedList.h>
+#include <controller/EmulatorController.h>
+#include <logger/StdOutLoggerFactory.h>
+#include <environment/Environment.h>
+#include "CommandManager.h"
 
-#include <boost/filesystem.hpp>
-#include <boost/algorithm/string/split.hpp>
-#include <boost/algorithm/string/classification.hpp>
+//#include <boost/filesystem.hpp>
+//#include <boost/algorithm/string/split.hpp>
+//#include <boost/algorithm/string/classification.hpp>
 
 using namespace std;
-using namespace boost::filesystem;
-using boost::is_any_of;
+//using namespace boost::filesystem;
+//using boost::is_any_of;
 
 int main(int argc, char **argv) {
+    StdOutLoggerFactory *loggerFactory = new StdOutLoggerFactory;
+    Environment::getEnvironment().setLoggerFactory(loggerFactory);
+    CommandManager commandManager;
 
-
-    string line;
+    EmulatorController *controller = new EmulatorController;
+    commandManager.registerCommand(controller);
+    string command;
     do {
-        getline(cin, line);
-
-        vector<string> result;
-
-        split(result, line, is_any_of(" "), boost::token_compress_on);
-
-
-
-        vector<string>::iterator i;
-        for (i = result.begin(); i != result.end(); i++)
-            cout << *i << endl;
-
-        cout << create_directory("/tmp/test") << endl;
-
-    } while (line != "stop");
-
+        cin >> command;
+        RemoteCommand *findCommand = commandManager.findCommand(command);
+        if (findCommand != nullptr) {
+            cout << "Send command: " << command << endl;
+            findCommand->sendCommand();
+        } else {
+            cout << "Unsupported command: " << command << endl;
+        }
+    } while (command != "stop");
 
     return 0;
 }
