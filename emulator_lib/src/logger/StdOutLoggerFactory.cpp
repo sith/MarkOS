@@ -7,5 +7,4 @@
 
 Logger *StdOutLoggerFactory::createLogger(const char *name) {
     return new StdOutLogger(name);
-
 }

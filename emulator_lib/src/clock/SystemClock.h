@@ -8,10 +8,13 @@
 
 #include <time/Clock.h>
 #include <ctime>
+#include <sys/time.h>
 
 class SystemClock : public Clock {
-    time_t startTime;
+    timeval startTime;
+    long toMilliseconds(const timeval &time) const;
 public:
+
     SystemClock();
 
     long getTime() override;

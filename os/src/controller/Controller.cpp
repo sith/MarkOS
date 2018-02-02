@@ -9,3 +9,7 @@
 void Controller::addModeListener(ModeListener &ml) {
     modeListener = &ml;
 }
+
+Controller::~Controller() {
+    delete defaultModeListener;
+}

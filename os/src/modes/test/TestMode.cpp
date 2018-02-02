@@ -21,6 +21,7 @@ TestMode::TestMode() : Mode(ModeName::TEST),
 }
 
 TestMode::~TestMode() {
+    Environment::getEnvironment().getTimer()->removeTasksForListener(*this);
     delete logger;
 }
 

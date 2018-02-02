@@ -26,6 +26,7 @@ void setup() {
     EmulatorController *controller = new EmulatorController;
     Environment::getEnvironment().setController(controller);
     Environment::getEnvironment().getCycle().getListeners()->add(controller);
+    Environment::getEnvironment().getCycle().getListeners()->add(timer);
 
     modeManager = new ModeManager;
     controller->addModeListener(*modeManager);
@@ -35,8 +36,7 @@ void setup() {
 
 
 void loop() {
-    Cycle &cycle = Environment::getEnvironment().getCycle();
-    cycle.next();
+    Environment::getEnvironment().getCycle().next();
     modeManager->getCurrentMode().process();
 }
 

@@ -22,9 +22,6 @@ class Environment {
     Timer *timer;
     Cycle cycle;
 public:
-    Environment();
-
-public:
     Clock *getClock() const;
 
     void setClock(Clock *clock);

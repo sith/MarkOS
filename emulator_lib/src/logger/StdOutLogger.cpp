@@ -3,25 +3,30 @@
 //
 
 #include <iostream>
+#include <environment/Environment.h>
 #include "StdOutLogger.h"
 
 Logger *StdOutLogger::logAppend(const char *c) {
     std::cout << c;
+    std::cout.flush();
     return this;
 }
 
 Logger *StdOutLogger::logAppend(int number) {
     std::cout << number;
+    std::cout.flush();
     return this;
 }
 
 Logger *StdOutLogger::logAppend(long number) {
     std::cout << number;
+    std::cout.flush();
     return this;
 }
 
 Logger *StdOutLogger::newLine() {
-    std::cout << "\n" << cycle << ":" << name << ": ";
+    std::cout << "\n" << Environment::getEnvironment().getClock()->getTime() << cycle << ":" << name << ": ";
+    std::cout.flush();
     return this;
 }
 
@@ -30,7 +35,6 @@ StdOutLogger::StdOutLogger(const char *name) : name(name) {
 }
 
 StdOutLogger::~StdOutLogger() {
-    delete name;
 }
 
 void StdOutLogger::onEvent(unsigned long cycleNumber) {

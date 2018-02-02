@@ -24,6 +24,10 @@ class LinkedList : public List<T> {
             return;
         }
 
+        if (node == right) {
+            right = nullptr;
+        }
+
         if (node == left) {
             left = node->next;
         } else {

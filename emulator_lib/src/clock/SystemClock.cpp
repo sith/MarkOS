@@ -5,18 +5,23 @@
 #include "SystemClock.h"
 
 #include <ctime>
+#include <sys/time.h>
 
 
 long SystemClock::getTime() {
-    time_t currentTime;
-    time(&currentTime);
-    time_t value = currentTime - startTime;
-    return value;
+    timeval endTime;
+    gettimeofday(&endTime, NULL);
+    long diff = toMilliseconds(endTime) - toMilliseconds(startTime);
+    return diff;
+}
+
+long SystemClock::toMilliseconds(const timeval &time) const {
+    return time.tv_sec * 1000 + time.tv_usec / 1000;
 }
 
 SystemClock::~SystemClock() {
 }
 
 SystemClock::SystemClock() {
-    time(&startTime);
+    gettimeofday(&startTime, NULL);
 }

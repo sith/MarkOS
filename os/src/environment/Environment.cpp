@@ -42,8 +42,7 @@ Cycle &Environment::getCycle() {
     return cycle;
 }
 
-Environment::Environment() : cycle(*new Cycle) {
-}
+
 
 Timer *Environment::getTimer() const {
     return timer;

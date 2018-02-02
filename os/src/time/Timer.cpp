@@ -18,7 +18,8 @@ void Timer::onEvent(unsigned long cycleNumber) {
         if (timerTask->isDone(currentTime)) {
             logger->newLine()->logAppend("Task is done.");
             timerTask->getListener()->onEvent();
-            delete iterator->remove();
+            TimerTask *doneTask = iterator->remove();
+            delete doneTask;
         }
     }
     delete iterator;
