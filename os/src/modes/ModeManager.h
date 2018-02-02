@@ -6,11 +6,16 @@
 #define MARK1_MARKIMODELISTENER_H
 
 
+#include <modes/test/TestMode.h>
 #include "ModeListener.h"
 #include "../logger/Logger.h"
 
 class ModeManager : public ModeListener {
     Mode *currentMode;
+
+    TestMode testMode;
+    NoopMode noopMode;
+
     Logger *logger;
 
     void deleteCurrentMode();

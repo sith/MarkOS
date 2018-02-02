@@ -21,10 +21,10 @@ void ModeManager::onModeChange(ModeName mode) {
         case ModeName::EXPLORER:
             break;
         case ModeName::TEST:
-            currentMode = new TestMode;
+            currentMode = &testMode;
             break;
         case ModeName::NONE:
-            currentMode = new NoopMode;
+            currentMode = &noopMode;
             break;
         default:
             return;
@@ -33,13 +33,13 @@ void ModeManager::onModeChange(ModeName mode) {
 
 void ModeManager::deleteCurrentMode() {
     logger->newLine()->logAppend("Delete mode: ")->logAppend(currentMode->getModeNameString());
-    delete currentMode;
-    currentMode = nullptr;
+    currentMode->stop();
+    currentMode = &noopMode;
 }
 
-ModeManager::ModeManager() : currentMode(new NoopMode),
-                             logger(Environment::getEnvironment().getLoggerFactory()->createLogger(
-                                     "ModeManager")) {
+ModeManager::ModeManager() : logger(Environment::getEnvironment().getLoggerFactory()->createLogger(
+        "ModeManager")) {
+    currentMode = &noopMode;
 }
 
 Mode &ModeManager::getCurrentMode() const {

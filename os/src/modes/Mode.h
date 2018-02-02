@@ -20,6 +20,8 @@ public:
 
     const char *getModeNameString();
 
+    virtual void stop()= 0;
+
     static const char *getModeNameString(ModeName &modeName);
 };
 
@@ -29,6 +31,10 @@ public:
     }
 
     NoopMode() : Mode(ModeName::NONE) {};
+
+    void stop() override {
+
+    }
 };
 
 #endif //MARK1_MODE_H

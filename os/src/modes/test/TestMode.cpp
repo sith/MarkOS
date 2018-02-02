@@ -17,12 +17,14 @@ const void TestMode::process() {
 
 TestMode::TestMode() : Mode(ModeName::TEST),
                        logger(Environment::getEnvironment().getLoggerFactory()->createLogger("TestMode")) {
-    logger->newLine()->logAppend("Started");
 }
 
 TestMode::~TestMode() {
-    Environment::getEnvironment().getTimer()->removeTasksForListener(*this);
     delete logger;
+}
+
+void TestMode::stop() {
+    Environment::getEnvironment().getTimer()->removeTasksForListener(*this);
 }
 
 void TestMode::onEvent() {

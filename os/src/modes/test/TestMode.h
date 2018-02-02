@@ -23,6 +23,8 @@ public:
 
     const void process() override;
 
+    void stop() override;
+
 };
 
 
