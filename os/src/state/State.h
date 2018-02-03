@@ -19,10 +19,13 @@ class State {
 protected:
     StateStatus stateStatus = WAITING;
 public:
+    virtual ~State() {}
 
-    virtual State &execute()= 0;
+    virtual State *execute()= 0;
 
-    virtual void stop()=0;
+    virtual void stop() {
+        stateStatus = WAITING;
+    };
 };
 
 class EmptyStateValue {
@@ -32,7 +35,7 @@ class EmptyStateValue {
 template<class T>
 class TransitionFunction {
 public:
-    virtual State &nextState(T &stateValue)= 0;
+    virtual State *nextState(T &stateValue)= 0;
 };
 
 

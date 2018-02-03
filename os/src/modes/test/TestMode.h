@@ -3,20 +3,23 @@
 
 
 #include <logger/Logger.h>
+#include <state/State.h>
+#include <state/standard/PrintState.h>
+#include <state/standard/WaitState.h>
+#include <state/DirectTransition.h>
 #include "../Mode.h"
 #include "../../time/TimerListener.h"
-class TestMode : public Mode, TimerListener {
-private:
-    int delayInMilliSeconds = 1000;
 
-    bool startNewTimer = true;
+class TestMode : public Mode {
+    State *currentState;
     Logger *logger;
+    PrintState printState;
+    WaitState waitState{1000};
+    DirectTransition directTransitionPrintState;
+    DirectTransition directTransitionToWaitState;
 
 public:
     TestMode();
-
-private:
-    void onEvent() override;
 
 public:
     virtual ~TestMode();

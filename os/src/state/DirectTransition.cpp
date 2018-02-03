@@ -4,8 +4,8 @@
 
 #include "DirectTransition.h"
 
-State &DirectTransition::nextState(EmptyStateValue &stateValue) {
+State *DirectTransition::nextState(EmptyStateValue &stateValue) {
     return state;
 }
 
-DirectTransition::DirectTransition(State &state) : state(state) {}
+DirectTransition::DirectTransition(State &state) : state(&state) {}

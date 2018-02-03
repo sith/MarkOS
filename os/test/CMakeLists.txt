@@ -6,8 +6,6 @@ add_executable(os_tests
         cycle/MockCycleListener.h
         modes/test/TestModeTest.cpp
         modes/test/TestModeTest.h
-        statemachine/StateMachineTest.cpp
-        statemachine/StateMachineTest.h
         time/TimerTest.cpp
         time/TimerTest.h
         time/MockClock.h

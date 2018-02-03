@@ -3,11 +3,10 @@
 //
 
 #include "NoopState.h"
-
-State &NoopState::execute() {
-    return *this;
-}
-
 void NoopState::stop() {
 
+}
+
+State *NoopState::execute() {
+    return this;
 }

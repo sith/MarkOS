@@ -6,11 +6,12 @@
 #define MARK1_NOOPSTATE_H
 
 
-#include "State.h"
+#include "state/State.h"
 
 class NoopState : public State{
 public:
-    State &execute() override;
+
+    State *execute() override;
 
     void stop() override;
 };

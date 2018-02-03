@@ -21,15 +21,11 @@ add_library(${PROJECT_NAME}
         src/modes/ModeName.h
         src/modes/ModeManager.h
         src/modes/ModeManager.cpp
-        src/modes/test/PrintState.h
-        src/modes/test/PrintState.cpp
         src/modes/test/TestMode.h
         src/modes/test/TestMode.cpp
-        src/modes/test/WaitState.h
-        src/modes/test/WaitState.cpp
         src/state/State.h
-        src/state/NoopState.h
-        src/state/NoopState.cpp
+        src/state/standard/NoopState.h
+        src/state/standard/NoopState.cpp
         src/state/DirectTransition.h
         src/state/DirectTransition.cpp
         src/time/Clock.h
@@ -39,10 +35,9 @@ add_library(${PROJECT_NAME}
         src/time/TimerTask.h
         src/time/TimerTask.cpp
         src/time/TimerListener.h
-        src/state/StateMachine.cpp src/state/StateMachine.h
 
 
-        )
+        src/state/standard/PrintState.cpp src/state/standard/PrintState.h src/state/standard/WaitState.cpp src/state/standard/WaitState.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)

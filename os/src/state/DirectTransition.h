@@ -9,13 +9,12 @@
 #include "State.h"
 
 class DirectTransition : public TransitionFunction<EmptyStateValue> {
-    State &state;
+    State *state;
 public:
     DirectTransition(State &state);
-
 public:
 
-    State &nextState(EmptyStateValue &stateValue) override;
+    State *nextState(EmptyStateValue &stateValue) override;
 };
 
 

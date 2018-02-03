@@ -1,22 +1,20 @@
 #include <environment/Environment.h>
+#include <state/DirectTransition.h>
 #include "TestMode.h"
-#include "PrintState.h"
-#include "WaitState.h"
-#include "../ModeName.h"
-#include "../../state/NoopState.h"
-#include "../../state/DirectTransition.h"
+#include "state/standard/PrintState.h"
 
 const void TestMode::process() {
-    if (startNewTimer) {
-        logger->newLine()->logAppend("Start new timer with delay: ")->logAppend(delayInMilliSeconds)->logAppend("ms");
-        Environment::getEnvironment().getTimer()->addTimer(delayInMilliSeconds, *this);
-        startNewTimer = false;
-        delayInMilliSeconds *= 2;
-    }
+    currentState = currentState->execute();
 }
 
 TestMode::TestMode() : Mode(ModeName::TEST),
-                       logger(Environment::getEnvironment().getLoggerFactory()->createLogger("TestMode")) {
+                       logger(Environment::getEnvironment().getLoggerFactory()->createLogger("TestMode")),
+                       directTransitionPrintState(printState),
+                       directTransitionToWaitState(waitState) {
+    waitState.setTransitionFunction(directTransitionPrintState);
+    printState.setTransitionFunction(directTransitionToWaitState);
+
+    currentState = &printState;
 }
 
 TestMode::~TestMode() {
@@ -24,9 +22,7 @@ TestMode::~TestMode() {
 }
 
 void TestMode::stop() {
-    Environment::getEnvironment().getTimer()->removeTasksForListener(*this);
-}
-
-void TestMode::onEvent() {
-    startNewTimer = true;
+    waitState.stop();
+    printState.stop();
+    currentState = &printState;
 }
