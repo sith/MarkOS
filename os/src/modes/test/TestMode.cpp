@@ -8,7 +8,7 @@ const void TestMode::process() {
 }
 
 TestMode::TestMode() : Mode(ModeName::TEST),
-                       logger(Environment::getEnvironment().getLoggerFactory()->createLogger("TestMode")),
+                       logger(LoggerFactory::newLogger("TestMode")),
                        directTransitionPrintState(printState),
                        directTransitionToWaitState(waitState) {
     waitState.setTransitionFunction(directTransitionPrintState);

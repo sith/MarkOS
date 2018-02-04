@@ -6,6 +6,7 @@
 #define MARKOS_ENVIRONMENT_H
 
 
+#include <modes/ModeManager.h>
 #include "../controller/Controller.h"
 #include "../logger/LoggerFactory.h"
 #include "../Random.h"
@@ -14,36 +15,37 @@
 #include "../time/Timer.h"
 
 class Environment {
-    static Environment environment;
+    static Environment *environment;
+protected:
+    ModeManager modeManager;
+    Cycle cycle;
+    Timer timer;
+
     Controller *controller;
-    LoggerFactory *loggerFactory;
     Random *random;
     Clock *clock;
-    Timer *timer;
-    Cycle cycle;
+
 public:
-    Clock *getClock() const;
 
-    void setClock(Clock *clock);
+    Environment(Controller *controller, Random *random, Clock *clock);
 
-    LoggerFactory *getLoggerFactory() const;
-
-    void setLoggerFactory(LoggerFactory *loggerFactory);
-
-    static Environment &getEnvironment();
-
-    void setController(Controller *controller);
-
-    Random *getRandom() const;
-
-    void setRandom(Random *random);
+    ModeManager &getModeManager();
 
     Cycle &getCycle();
 
-    Timer *getTimer() const;
+    Timer &getTimer();
 
-    void setTimer(Timer *timer);
+    Controller *getController();
 
+    Random *getRandom();
+
+    Clock *getClock();
+
+    static Environment &getEnvironment();
+
+    static void setEnvironment(Environment *environment);
+
+    void loop();
 };
 
 

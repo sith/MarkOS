@@ -11,35 +11,22 @@
 #include <modes/ModeManager.h>
 #include <controller/EmulatorController.h>
 
-ModeManager *modeManager;
 
 void setup() {
-    StdOutLoggerFactory *loggerFactory = new StdOutLoggerFactory;
-    Environment::getEnvironment().setLoggerFactory(loggerFactory);
-    SystemClock *systemClock = new SystemClock;
-    Environment::getEnvironment().setClock(systemClock);
 
-    Timer *timer = new Timer(*systemClock);
-    Environment::getEnvironment().setTimer(timer);
+    LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
+
+    Environment *environment = new Environment(new EmulatorController, nullptr, new SystemClock);
+    Environment::setEnvironment(environment);
 
 
-    EmulatorController *controller = new EmulatorController;
-    Environment::getEnvironment().setController(controller);
-    Environment::getEnvironment().getCycle().getListeners()->add(controller);
-    Environment::getEnvironment().getCycle().getListeners()->add(timer);
-
-    modeManager = new ModeManager;
-    controller->addModeListener(*modeManager);
-
-    loggerFactory->createLogger("Main")->newLine()->logAppend("App is started");
+    LoggerFactory::newLogger("Main")->newLine()->logAppend("App is started");
 }
 
 
 void loop() {
-    Environment::getEnvironment().getCycle().next();
-    modeManager->getCurrentMode().process();
+    Environment::getEnvironment().loop();
 }
-
 
 int main(int argc, char **argv) {
     setup();

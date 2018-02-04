@@ -11,7 +11,7 @@ State *PrintState::execute() {
     return transitionFunction->nextState(e);
 }
 
-PrintState::PrintState() : logger(Environment::getEnvironment().getLoggerFactory()->createLogger("PrintState")) {}
+PrintState::PrintState() : logger(LoggerFactory::newLogger("PrintState")) {}
 
 PrintState::~PrintState() {
     delete logger;

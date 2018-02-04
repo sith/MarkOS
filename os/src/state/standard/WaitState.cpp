@@ -8,7 +8,7 @@
 State *WaitState::execute() {
     switch (stateStatus) {
         case WAITING:
-            Environment::getEnvironment().getTimer()->addTimer(waitTime, *this);
+            Environment::getEnvironment().getTimer().addTimer(waitTime, *this);
             stateStatus = IN_PROGRESS;
             return this;
         case IN_PROGRESS:
@@ -31,8 +31,7 @@ WaitState::~WaitState() {
 }
 
 WaitState::WaitState(int waitTime) : waitTime(waitTime),
-                                     logger(Environment::getEnvironment().getLoggerFactory()->createLogger(
-                                             "WaitState")) {}
+                                     logger(LoggerFactory::newLogger("WaitState")) {}
 
 void WaitState::setTransitionFunction(TransitionFunction<EmptyStateValue> &transitionFunction) {
     WaitState::transitionFunction = &transitionFunction;
@@ -40,5 +39,5 @@ void WaitState::setTransitionFunction(TransitionFunction<EmptyStateValue> &trans
 
 void WaitState::stop() {
     State::stop();
-    Environment::getEnvironment().getTimer()->removeTasksForListener(*this);
+    Environment::getEnvironment().getTimer().removeTasksForListener(*this);
 }

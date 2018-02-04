@@ -37,8 +37,7 @@ Command EmulatorController::readControllerCommand() {
 }
 
 EmulatorController::EmulatorController() : RemoteCommand("controller"),
-                                           logger(Environment::getEnvironment()
-                                                          .getLoggerFactory()->createLogger("Controller")) {}
+                                           logger(LoggerFactory::newLogger("Controller")) {}
 
 void EmulatorController::send(ofstream &ofstream) {
     string type;

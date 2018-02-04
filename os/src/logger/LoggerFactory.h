@@ -8,7 +8,13 @@
 #include "Logger.h"
 
 class LoggerFactory {
+    static LoggerFactory *loggerFactory;
 public:
+
+    static Logger *newLogger(const char *name);
+
+    static void setLoggerFactory(LoggerFactory *loggerFactory);
+
     virtual Logger *createLogger(const char *name)= 0;
 };
 

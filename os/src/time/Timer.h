@@ -15,10 +15,10 @@
 
 class Timer : public CycleListener {
     List<TimerTask> *tasks = new LinkedList<TimerTask>();
-    Clock &clock;
     Logger *logger;
 public:
-    Timer(Clock &clock);
+
+    Timer();
 
     virtual ~Timer();
 

@@ -12,7 +12,7 @@ using ::testing::Exactly;
 
 void TimerTest::SetUp() {
     clock = new MockClock;
-    timer = new Timer(*clock);
+    timer = new Timer();
     auto environment = Environment::getEnvironment();
     environment.setClock(clock);
     environment.setTimer(timer);

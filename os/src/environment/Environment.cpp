@@ -4,51 +4,48 @@
 
 #include "Environment.h"
 
-Environment Environment::environment;
+Environment *Environment::environment;
 
 Environment &Environment::getEnvironment() {
-    return environment;
+    return *environment;
 }
 
-void Environment::setController(Controller *controller) {
-    Environment::controller = controller;
+void Environment::setEnvironment(Environment *environment) {
+    Environment::environment = environment;
 }
 
-LoggerFactory *Environment::getLoggerFactory() const {
-    return loggerFactory;
+void Environment::loop() {
+    cycle.next();
+    modeManager.getCurrentMode().process();
 }
 
-void Environment::setLoggerFactory(LoggerFactory *loggerFactory) {
-    Environment::loggerFactory = loggerFactory;
-}
-
-Random *Environment::getRandom() const {
-    return random;
-}
-
-void Environment::setRandom(Random *random) {
-    Environment::random = random;
-}
-
-Clock *Environment::getClock() const {
-    return clock;
-}
-
-void Environment::setClock(Clock *clock) {
-    Environment::clock = clock;
+ModeManager &Environment::getModeManager() {
+    return modeManager;
 }
 
 Cycle &Environment::getCycle() {
     return cycle;
 }
 
-
-
-Timer *Environment::getTimer() const {
+Timer &Environment::getTimer() {
     return timer;
 }
 
-void Environment::setTimer(Timer *timer) {
-    Environment::timer = timer;
+Controller *Environment::getController() {
+    return controller;
 }
 
+Random *Environment::getRandom() {
+    return random;
+}
+
+Clock *Environment::getClock() {
+    return clock;
+}
+
+Environment::Environment(Controller *controller, Random *random, Clock *clock) : controller(controller), random(random),
+                                                                                 clock(clock) {
+    cycle.getListeners()->add(controller);
+    cycle.getListeners()->add(&timer);
+    controller->addModeListener(modeManager);
+}
