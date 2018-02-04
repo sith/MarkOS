@@ -25,7 +25,7 @@ Logger *StdOutLogger::logAppend(long number) {
 }
 
 Logger *StdOutLogger::newLine() {
-    std::cout << "\n" << Environment::getEnvironment().getClock()->getTime() << cycle << ":" << name << ": ";
+    std::cout << "\n" << cycle << ":" << name << ": ";
     std::cout.flush();
     return this;
 }

@@ -15,20 +15,17 @@
 #include "../time/Timer.h"
 
 class Environment {
-    static Environment *environment;
+    static Environment environment;
 protected:
-    ModeManager modeManager;
-    Cycle cycle;
-    Timer timer;
+    ModeManager *modeManager;
+    Cycle *cycle;
+    Timer *timer;
 
     Controller *controller;
     Random *random;
     Clock *clock;
 
 public:
-
-    Environment(Controller *controller, Random *random, Clock *clock);
-
     ModeManager &getModeManager();
 
     Cycle &getCycle();
@@ -43,7 +40,13 @@ public:
 
     static Environment &getEnvironment();
 
-    static void setEnvironment(Environment *environment);
+    void setController(Controller *controller);
+
+    void setRandom(Random *random);
+
+    void setClock(Clock *clock);
+
+    void init();
 
     void loop();
 };

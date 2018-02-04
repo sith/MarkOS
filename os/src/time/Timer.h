@@ -16,9 +16,12 @@
 class Timer : public CycleListener {
     List<TimerTask> *tasks = new LinkedList<TimerTask>();
     Logger *logger;
+    Clock *clock;
 public:
 
     Timer();
+
+    Timer(Clock *clock);
 
     virtual ~Timer();
 
@@ -27,7 +30,6 @@ public:
     void addTimer(int milliseconds, TimerListener &timerListener);
 
     void removeTasksForListener(TimerListener &timerListener);
-
 };
 
 

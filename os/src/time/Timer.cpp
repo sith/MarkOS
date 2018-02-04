@@ -7,12 +7,12 @@
 
 void Timer::addTimer(int milliseconds, TimerListener &timerListener) {
     logger->newLine()->logAppend("New timer task is accepted. Delay: ")->logAppend(milliseconds);
-    tasks->add(new TimerTask(Environment::getEnvironment().getClock()->getTime() + milliseconds, &timerListener));
+    tasks->add(new TimerTask(clock->getTime() + milliseconds, &timerListener));
 }
 
 void Timer::onEvent(unsigned long cycleNumber) {
     auto *iterator = tasks->iterator();
-    long currentTime = Environment::getEnvironment().getClock()->getTime();
+    long currentTime = clock->getTime();
     while (iterator->hasNext()) {
         auto timerTask = iterator->next();
         if (timerTask->isDone(currentTime)) {
@@ -25,7 +25,9 @@ void Timer::onEvent(unsigned long cycleNumber) {
     delete iterator;
 }
 
-Timer::Timer() : logger(LoggerFactory::newLogger("Timer")) {}
+Timer::Timer() : Timer(Environment::getEnvironment().getClock()) {}
+
+Timer::Timer(Clock *clock) : clock(clock), logger(LoggerFactory::newLogger("Timer")) {}
 
 Timer::~Timer() {
     delete tasks;

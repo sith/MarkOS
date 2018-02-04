@@ -11,12 +11,15 @@
 
 class TimerTest : public ::testing::Test {
 protected:
+
     void SetUp() override;
 
     void TearDown() override;
 
     Timer *timer;
     MockClock *clock;
+    Cycle *cycle;
+    StdOutLoggerFactory loggerFactory;
 };
 
 

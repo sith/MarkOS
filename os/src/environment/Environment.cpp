@@ -4,31 +4,27 @@
 
 #include "Environment.h"
 
-Environment *Environment::environment;
+Environment Environment::environment;
 
 Environment &Environment::getEnvironment() {
-    return *environment;
-}
-
-void Environment::setEnvironment(Environment *environment) {
-    Environment::environment = environment;
+    return environment;
 }
 
 void Environment::loop() {
-    cycle.next();
-    modeManager.getCurrentMode().process();
+    cycle->next();
+    modeManager->getCurrentMode().process();
 }
 
 ModeManager &Environment::getModeManager() {
-    return modeManager;
+    return *modeManager;
 }
 
 Cycle &Environment::getCycle() {
-    return cycle;
+    return *cycle;
 }
 
 Timer &Environment::getTimer() {
-    return timer;
+    return *timer;
 }
 
 Controller *Environment::getController() {
@@ -43,9 +39,25 @@ Clock *Environment::getClock() {
     return clock;
 }
 
-Environment::Environment(Controller *controller, Random *random, Clock *clock) : controller(controller), random(random),
-                                                                                 clock(clock) {
-    cycle.getListeners()->add(controller);
-    cycle.getListeners()->add(&timer);
-    controller->addModeListener(modeManager);
+void Environment::setController(Controller *controller) {
+    Environment::controller = controller;
 }
+
+void Environment::setRandom(Random *random) {
+    Environment::random = random;
+}
+
+void Environment::setClock(Clock *clock) {
+    Environment::clock = clock;
+}
+
+void Environment::init() {
+    modeManager = new ModeManager;
+    cycle = new Cycle;
+    timer = new Timer;
+
+    cycle->getListeners()->add(controller);
+    cycle->getListeners()->add(timer);
+    controller->addModeListener(*modeManager);
+}
+

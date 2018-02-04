@@ -13,12 +13,11 @@
 
 
 void setup() {
-
     LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
 
-    Environment *environment = new Environment(new EmulatorController, nullptr, new SystemClock);
-    Environment::setEnvironment(environment);
-
+    Environment::getEnvironment().setController(new EmulatorController);
+    Environment::getEnvironment().setClock(new SystemClock);
+    Environment::getEnvironment().init();
 
     LoggerFactory::newLogger("Main")->newLine()->logAppend("App is started");
 }

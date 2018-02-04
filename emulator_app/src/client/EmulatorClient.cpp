@@ -15,8 +15,7 @@ using namespace std;
 //using boost::is_any_of;
 
 int main(int argc, char **argv) {
-    StdOutLoggerFactory *loggerFactory = new StdOutLoggerFactory;
-    Environment::getEnvironment().setLoggerFactory(loggerFactory);
+    LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
     CommandManager commandManager;
 
     EmulatorController *controller = new EmulatorController;
