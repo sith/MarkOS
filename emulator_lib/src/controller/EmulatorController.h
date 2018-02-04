@@ -11,7 +11,9 @@
 #include <cycle/CycleListener.h>
 #include <logger/Logger.h>
 
-class EmulatorController : public Controller, public RemoteCommand, public CycleListener {
+using namespace std;
+
+class EmulatorController : public Controller, public RemoteCommand {
     ModeName findModeName(string &modeNameString);
 
     Logger *logger;
@@ -21,11 +23,9 @@ class EmulatorController : public Controller, public RemoteCommand, public Cycle
 public:
     virtual ~EmulatorController();
 
-    void onEvent(unsigned long cycleNumber) override;
-
     EmulatorController();
 
-    void readControllerCommand() override;
+    Command readControllerCommand() override;
 };
 
 

@@ -2,12 +2,13 @@
 // Created by Oleksandra Baukh on 1/29/18.
 //
 
-#ifndef MARKOS_COMMAND_H
-#define MARKOS_COMMAND_H
+#ifndef MARKOS_RemoteCommand_H
+#define MARKOS_RemoteCommand_H
 
 #include <fstream>
 
 using namespace std;
+
 class RemoteCommand {
     string commandName;
     string transportPath = "/tmp/emulator/";

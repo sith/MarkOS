@@ -8,21 +8,32 @@
 
 using namespace std;
 
-void EmulatorController::readControllerCommand() {
+Command EmulatorController::readControllerCommand() {
     ifstream stream;
 
     openStream(stream);
 
     if (!stream) {
-        return;
+        return Command::NONE;
     }
 
-    string modeNameString;
-    stream >> modeNameString;
-    ModeName modeName = findModeName(modeNameString);
-    modeListener->onModeChange(modeName);
+    string type;
+    string value;
+    stream >> type >> value;
+
+    Command command = Command::NONE;
+    if (type == "mode") {
+        if (value == "cancel") {
+            command = Command::STOP_MODE;
+        } else {
+            ModeName modeName = findModeName(value);
+            Controller::modeName = modeName;
+            command = Command::SELECT_MODE;
+        }
+    }
     stream.close();
     acknowledgeCommand();
+    return command;
 }
 
 EmulatorController::EmulatorController() : RemoteCommand("controller"),
@@ -30,9 +41,10 @@ EmulatorController::EmulatorController() : RemoteCommand("controller"),
                                                           .getLoggerFactory()->createLogger("Controller")) {}
 
 void EmulatorController::send(ofstream &ofstream) {
-    string command;
-    cin >> command;
-    ofstream << command;
+    string type;
+    string value;
+    cin >> type >> value;
+    ofstream << type << " " << value;
 }
 
 ModeName EmulatorController::findModeName(string &modeNameString) {
@@ -55,10 +67,6 @@ ModeName EmulatorController::findModeName(string &modeNameString) {
         return TEST;
     }
     return NONE;
-}
-
-void EmulatorController::onEvent(unsigned long cycleNumber) {
-    readControllerCommand();
 }
 
 EmulatorController::~EmulatorController() {
