@@ -127,3 +127,22 @@ TEST(LinkedListTest, removeWorksForIterator) {
     ASSERT_TRUE(newIterator.hasNext());
     ASSERT_EQ(*newIterator.next(), two);
 }
+
+class Dummy {
+
+};
+
+TEST(LinkedListTest, removeObjectByPointer) {
+    LinkedList<Dummy> list;
+
+    Dummy dummy1;
+    Dummy dummy2;
+
+    list.add(&dummy1);
+    list.add(&dummy2);
+
+    ASSERT_TRUE(list.removeByPointer(&dummy1));
+
+    ASSERT_EQ(list.size(), 1);
+    ASSERT_EQ(list.get(0), &dummy2);
+}

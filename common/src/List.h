@@ -18,6 +18,8 @@ public:
 
     virtual T *remove(int index)= 0;
 
+    virtual bool removeByPointer(T *e)= 0;
+
     virtual T *get(int index)= 0;
 
     virtual int size()=0;

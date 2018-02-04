@@ -66,7 +66,18 @@ class LinkedList : public List<T> {
     }
 
 public:
-
+    bool removeByPointer(T *e) override {
+        bool deleted = false;
+        Iterator<T> *it = iterator();
+        while (it->hasNext()) {
+            if (it->next() == e) {
+                it->remove();
+                deleted = true;
+            }
+        }
+        delete it;
+        return deleted;
+    }
 
     void add(T *e) override {
 
