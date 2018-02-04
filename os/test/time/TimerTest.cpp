@@ -6,6 +6,8 @@
 #include "TimerTest.h"
 #include "MockTimerListener.h"
 #include "MockClock.h"
+#include "../mocks/MockController.h"
+#include "../mocks/MockRandom.h"
 
 using ::testing::Return;
 using ::testing::Exactly;
@@ -13,16 +15,19 @@ using ::testing::Exactly;
 void TimerTest::SetUp() {
     clock = new MockClock;
     timer = new Timer();
-    auto environment = Environment::getEnvironment();
-    environment.setClock(clock);
-    environment.setTimer(timer);
-    environment.getCycle().getListeners()->add(timer);
+
+    auto *environment = new Environment(nullptr, nullptr, clock);
+
+    Environment::setEnvironment(environment);
+
+    environment->getCycle().getListeners()->add(timer);
 }
 
 void TimerTest::TearDown() {
     Test::TearDown();
     delete timer;
     delete clock;
+    delete &Environment::getEnvironment();
 }
 
 TEST_F(TimerTest, addTimer) {

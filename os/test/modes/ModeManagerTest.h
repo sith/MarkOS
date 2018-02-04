@@ -17,7 +17,7 @@ protected:
     StdOutLoggerFactory factory;
 
     void SetUp() override {
-        Environment::getEnvironment().setLoggerFactory(&factory);
+        LoggerFactory::setLoggerFactory(&factory);
         modeManager = new ModeManager;
     }
 
