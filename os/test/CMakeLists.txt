@@ -12,7 +12,7 @@ add_executable(os_tests
         time/MockTimerListener.h
         modes/ModeManagerTest.h
         modes/ModeManagerTest.cpp
-        )
+        controller/ControllerTest.cpp controller/ControllerTest.h controller/TestController.cpp controller/TestController.h mocks/MockModeListener.h mocks/MockControllerCommandListener.h)
 
 target_link_libraries(os_tests emulator_lib)
 

@@ -35,9 +35,12 @@ add_library(${PROJECT_NAME}
         src/time/TimerTask.h
         src/time/TimerTask.cpp
         src/time/TimerListener.h
-
-
-        src/state/standard/PrintState.cpp src/state/standard/PrintState.h src/state/standard/WaitState.cpp src/state/standard/WaitState.h)
+        src/state/standard/PrintState.cpp
+        src/state/standard/PrintState.h
+        src/state/standard/WaitState.cpp
+        src/state/standard/WaitState.h
+        src/controller/Command.h
+        src/controller/ControllerCommandListener.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)
