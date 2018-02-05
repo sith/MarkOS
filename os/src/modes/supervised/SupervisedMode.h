@@ -9,8 +9,9 @@
 #include <modes/Mode.h>
 #include <drivers/MotorDriver.h>
 #include <controller/ControllerCommandListener.h>
+#include <sensors/ObstacleSensor.h>
 
-class SupervisedMode : public Mode, public ControllerCommandListener {
+class SupervisedMode : public Mode, public ControllerCommandListener, public ObstacleListener {
 public:
 
     SupervisedMode();
@@ -22,6 +23,8 @@ public:
     void init() override;
 
     void onEvent(Command command) override;
+
+    void onEvent(Obstacle obstacle) override;
 
     ~SupervisedMode() override;
 

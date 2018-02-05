@@ -49,11 +49,12 @@ ModeName Controller::getModeName() const {
 
 Controller::Controller() {}
 
-void Controller::addControllerCommandListener(ControllerCommandListener &controllerCommandListener) {
+// TODO unify listeners
+void Controller::addListener(ControllerCommandListener &controllerCommandListener) {
     commandListeners->add(&controllerCommandListener);
 }
 
-void Controller::deleteControllerCommandListener(ControllerCommandListener &controllerCommandListener) {
+void Controller::removeListener(ControllerCommandListener &controllerCommandListener) {
     commandListeners->removeByPointer(&controllerCommandListener);
 }
 

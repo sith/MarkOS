@@ -30,8 +30,7 @@ Command EmulatorController::readControllerCommand() {
         command = processActionCommand(value);
     }
 
-    stream.close();
-    acknowledgeCommand();
+    acknowledgeCommand(stream);
     return command;
 }
 

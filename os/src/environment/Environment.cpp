@@ -58,6 +58,8 @@ void Environment::init() {
 
     cycle->getListeners()->add(controller);
     cycle->getListeners()->add(timer);
+    cycle->getListeners()->add(obstacleSensor);
+
     controller->addModeListener(*modeManager);
 }
 
@@ -67,5 +69,13 @@ MotorDriver *Environment::getMotorDriver() const {
 
 void Environment::setMotorDriver(MotorDriver *motorDriver) {
     Environment::motorDriver = motorDriver;
+}
+
+ObstacleSensor *Environment::getObstacleSensor() const {
+    return obstacleSensor;
+}
+
+void Environment::setObstacleSensor(ObstacleSensor *obstacleSensor) {
+    Environment::obstacleSensor = obstacleSensor;
 }
 

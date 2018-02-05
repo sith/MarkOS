@@ -11,7 +11,8 @@ const void SupervisedMode::process() {
 
 void SupervisedMode::stop() {
     Environment::getEnvironment().getMotorDriver()->stop();
-    Environment::getEnvironment().getController()->deleteControllerCommandListener(*this);
+    Environment::getEnvironment().getController()->removeListener(*this);
+    Environment::getEnvironment().getObstacleSensor()->removeListener(this);
 }
 
 SupervisedMode::SupervisedMode() : Mode(ModeName::SUPERVISED) {
@@ -43,9 +44,15 @@ void SupervisedMode::onEvent(Command command) {
 }
 
 SupervisedMode::~SupervisedMode() {
-
 }
 
 void SupervisedMode::init() {
-    Environment::getEnvironment().getController()->addControllerCommandListener(*this);
+    Environment::getEnvironment().getController()->addListener(*this);
+    Environment::getEnvironment().getObstacleSensor()->addListener(this);
+}
+
+void SupervisedMode::onEvent(Obstacle obstacle) {
+    if (obstacle.hasAnyObstacle()) {
+        Environment::getEnvironment().getMotorDriver()->stop();
+    }
 }

@@ -13,6 +13,8 @@ public:
     MOCK_METHOD1(onEvent,
                  void(Command
                          command));
+
+    virtual ~MockControllerCommandListener() {}
 };
 
 #endif //MARKOS_ASDF_H

@@ -20,7 +20,7 @@ class ModeManager : public ModeListener {
 
     Logger *logger;
 
-    void deleteCurrentMode();
+    void stopCurrentMode();
 
 public:
     ModeManager();

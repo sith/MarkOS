@@ -29,9 +29,9 @@ public:
 
     void addModeListener(ModeListener &ml);
 
-    void addControllerCommandListener(ControllerCommandListener &controllerCommandListener);
+    void addListener(ControllerCommandListener &controllerCommandListener);
 
-    void deleteControllerCommandListener(ControllerCommandListener &controllerCommandListener);
+    void removeListener(ControllerCommandListener &controllerCommandListener);
 
     virtual Command readControllerCommand()=0;
 

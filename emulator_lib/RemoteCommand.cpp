@@ -20,7 +20,8 @@ void RemoteCommand::openStream(ifstream &stream) {
     stream.open(path);
 }
 
-void RemoteCommand::acknowledgeCommand() {
+void RemoteCommand::acknowledgeCommand(ifstream &stream) {
+    stream.close();
     remove((transportPath + commandName).c_str());
 }
 

@@ -6,11 +6,10 @@
 #include <logger/StdOutLogger.h>
 #include <environment/Environment.h>
 #include <clock/SystemClock.h>
-#include <iostream>
 #include <logger/StdOutLoggerFactory.h>
-#include <modes/ModeManager.h>
 #include <controller/EmulatorController.h>
 #include <drivers/EmulatorMotorDriver.h>
+#include <sensors/EmulatorObstacleSensor.h>
 
 
 void setup() {
@@ -18,6 +17,7 @@ void setup() {
 
     Environment::getEnvironment().setController(new EmulatorController);
     Environment::getEnvironment().setMotorDriver(new EmulatorMotorDriver);
+    Environment::getEnvironment().setObstacleSensor(new EmulatorObstacleSensor);
     Environment::getEnvironment().setClock(new SystemClock);
     Environment::getEnvironment().init();
 

@@ -7,6 +7,7 @@
 
 
 #include <modes/ModeManager.h>
+#include <sensors/ObstacleSensor.h>
 #include "../controller/Controller.h"
 #include "../logger/LoggerFactory.h"
 #include "../Random.h"
@@ -25,6 +26,7 @@ protected:
     Random *random;
     Clock *clock;
     MotorDriver *motorDriver;
+    ObstacleSensor *obstacleSensor;
 
 public:
     ModeManager &getModeManager();
@@ -50,6 +52,10 @@ public:
     void setRandom(Random *random);
 
     void setClock(Clock *clock);
+
+    ObstacleSensor *getObstacleSensor() const;
+
+    void setObstacleSensor(ObstacleSensor *obstacleSensor);
 
     void init();
 

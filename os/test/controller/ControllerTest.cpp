@@ -17,8 +17,8 @@ void ControllerTest::SetUp() {
     controllerCommandListener2 = new MockControllerCommandListener;
 
     testController->addModeListener(*mockModeListener);
-    testController->addControllerCommandListener(*controllerCommandListener1);
-    testController->addControllerCommandListener(*controllerCommandListener2);
+    testController->addListener(*controllerCommandListener1);
+    testController->addListener(*controllerCommandListener2);
 }
 
 void ControllerTest::TearDown() {
@@ -74,7 +74,7 @@ TEST_F(ControllerTest, selectControls) {
     testController->setCommand(Command::LEFT);
     testController->onEvent(2);
 
-    testController->deleteControllerCommandListener(*controllerCommandListener2);
+    testController->removeListener(*controllerCommandListener2);
 
     testController->setCommand(Command::RIGHT);
     testController->onEvent(3);

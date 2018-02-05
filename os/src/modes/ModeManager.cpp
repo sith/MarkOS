@@ -8,7 +8,7 @@ void ModeManager::onModeChange(ModeName mode) {
     if (currentMode->getModeName() == mode) {
         return;
     }
-    deleteCurrentMode();
+    stopCurrentMode();
     switch (mode) {
         case ModeName::CALIBRATION:
             break;
@@ -32,7 +32,7 @@ void ModeManager::onModeChange(ModeName mode) {
     }
 }
 
-void ModeManager::deleteCurrentMode() {
+void ModeManager::stopCurrentMode() {
     logger->newLine()->logAppend("Delete mode: ")->logAppend(currentMode->getModeNameString());
     currentMode->stop();
     currentMode = &noopMode;

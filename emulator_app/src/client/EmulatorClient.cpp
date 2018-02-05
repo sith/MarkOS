@@ -4,6 +4,8 @@
 #include <controller/EmulatorController.h>
 #include <logger/StdOutLoggerFactory.h>
 #include <environment/Environment.h>
+#include <sensors/ObstacleSensor.h>
+#include <sensors/EmulatorObstacleSensor.h>
 #include "CommandManager.h"
 
 //#include <boost/filesystem.hpp>
@@ -18,8 +20,9 @@ int main(int argc, char **argv) {
     LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
     CommandManager commandManager;
 
-    EmulatorController *controller = new EmulatorController;
-    commandManager.registerCommand(controller);
+    commandManager.registerCommand(new EmulatorController);
+    commandManager.registerCommand(new EmulatorObstacleSensor);
+    
     string command;
     do {
         cin >> command;

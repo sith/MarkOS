@@ -22,7 +22,7 @@ public:
 
     void openStream(ifstream &stream);
 
-    void acknowledgeCommand();
+    void acknowledgeCommand(ifstream &stream);
 
     virtual void send(ofstream &ofstream)= 0;
 };

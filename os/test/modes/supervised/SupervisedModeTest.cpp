@@ -18,7 +18,7 @@ void SupervisedModeTest::SetUp() {
 
     Environment::getEnvironment().setMotorDriver(&mockMotorDriver);
     Environment::getEnvironment().setController(&mockController);
-    Environment::getEnvironment().getController()->addControllerCommandListener(*supervisedMode);
+    Environment::getEnvironment().getController()->addListener(*supervisedMode);
 
 }
 
@@ -55,6 +55,20 @@ TEST_F(SupervisedModeTest, stopMode) {
     supervisedMode->stop();
 
     ASSERT_EQ(Environment::getEnvironment().getController()->getCommandListeners()->size(), 0);
+}
 
+
+TEST_F(SupervisedModeTest, obstacle) {
+
+    EXPECT_CALL(mockMotorDriver, stop()).Times(Exactly(3));
+
+    Obstacle forwardObstacle{false, true, false};
+    supervisedMode->onEvent(forwardObstacle);
+
+    Obstacle leftObstacle{true, false, false};
+    supervisedMode->onEvent(leftObstacle);
+
+    Obstacle rightObstacle{false, false, true};
+    supervisedMode->onEvent(rightObstacle);
 
 }
