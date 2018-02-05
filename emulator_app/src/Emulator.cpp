@@ -10,12 +10,14 @@
 #include <logger/StdOutLoggerFactory.h>
 #include <modes/ModeManager.h>
 #include <controller/EmulatorController.h>
+#include <drivers/EmulatorMotorDriver.h>
 
 
 void setup() {
     LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
 
     Environment::getEnvironment().setController(new EmulatorController);
+    Environment::getEnvironment().setMotorDriver(new EmulatorMotorDriver);
     Environment::getEnvironment().setClock(new SystemClock);
     Environment::getEnvironment().init();
 

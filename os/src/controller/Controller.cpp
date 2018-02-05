@@ -64,3 +64,7 @@ void Controller::notifyOnCommand(Command command) {
     }
     delete iterator;
 }
+
+List<ControllerCommandListener> *Controller::getCommandListeners() const {
+    return commandListeners;
+}

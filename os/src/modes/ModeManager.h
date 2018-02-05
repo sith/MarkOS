@@ -7,6 +7,7 @@
 
 
 #include <modes/test/TestMode.h>
+#include <modes/supervised/SupervisedMode.h>
 #include "ModeListener.h"
 #include "../logger/Logger.h"
 
@@ -15,6 +16,7 @@ class ModeManager : public ModeListener {
 
     TestMode testMode;
     NoopMode noopMode;
+    SupervisedMode supervisedMode;
 
     Logger *logger;
 
@@ -28,6 +30,8 @@ public:
     Mode &getCurrentMode() const;
 
     void onModeChange(ModeName mode) override;
+
+    void initMode(Mode &pMode);
 };
 
 

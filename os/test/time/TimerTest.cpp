@@ -7,7 +7,7 @@
 #include <time/Timer.h>
 #include "TimerTest.h"
 #include "MockTimerListener.h"
-#include "MockClock.h"
+#include "../mocks/MockClock.h"
 #include "../mocks/MockController.h"
 #include "../mocks/MockRandom.h"
 

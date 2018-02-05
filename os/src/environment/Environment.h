@@ -24,6 +24,7 @@ protected:
     Controller *controller;
     Random *random;
     Clock *clock;
+    MotorDriver *motorDriver;
 
 public:
     ModeManager &getModeManager();
@@ -37,6 +38,10 @@ public:
     Random *getRandom();
 
     Clock *getClock();
+
+    MotorDriver *getMotorDriver() const;
+
+    void setMotorDriver(MotorDriver *motorDriver);
 
     static Environment &getEnvironment();
 

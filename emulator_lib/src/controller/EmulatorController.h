@@ -26,6 +26,10 @@ public:
     EmulatorController();
 
     Command readControllerCommand() override;
+
+    Command processModeCommand(string &value);
+
+    Command processActionCommand(const string &value);
 };
 
 

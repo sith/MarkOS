@@ -7,7 +7,7 @@
 
 
 #include <gtest/gtest.h>
-#include "MockClock.h"
+#include "../mocks/MockClock.h"
 
 class TimerTest : public ::testing::Test {
 protected:

@@ -61,3 +61,11 @@ void Environment::init() {
     controller->addModeListener(*modeManager);
 }
 
+MotorDriver *Environment::getMotorDriver() const {
+    return motorDriver;
+}
+
+void Environment::setMotorDriver(MotorDriver *motorDriver) {
+    Environment::motorDriver = motorDriver;
+}
+

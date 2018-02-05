@@ -15,13 +15,14 @@ void ModeManager::onModeChange(ModeName mode) {
         case ModeName::FREE_RUN:
             break;
         case ModeName::SUPERVISED:
+            initMode(supervisedMode);
             break;
         case ModeName::FIXED_ROUTE:
             break;
         case ModeName::EXPLORER:
             break;
         case ModeName::TEST:
-            currentMode = &testMode;
+            initMode(testMode);
             break;
         case ModeName::NONE:
             currentMode = &noopMode;
@@ -48,4 +49,9 @@ Mode &ModeManager::getCurrentMode() const {
 ModeManager::~ModeManager() {
     delete currentMode;
     delete logger;
+}
+
+void ModeManager::initMode(Mode &newMode) {
+    currentMode = &newMode;
+    currentMode->init();
 }

@@ -26,3 +26,7 @@ void TestMode::stop() {
     printState.stop();
     currentState = &printState;
 }
+
+void TestMode::init() {
+
+}

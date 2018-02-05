@@ -40,7 +40,7 @@ add_library(${PROJECT_NAME}
         src/state/standard/WaitState.cpp
         src/state/standard/WaitState.h
         src/controller/Command.h
-        src/controller/ControllerCommandListener.h src/logger/LoggerFactory.cpp)
+        src/controller/ControllerCommandListener.h src/logger/LoggerFactory.cpp src/modes/supervised/SupervisedMode.cpp src/modes/supervised/SupervisedMode.h src/drivers/MotorDriver.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)

@@ -22,17 +22,28 @@ Command EmulatorController::readControllerCommand() {
     stream >> type >> value;
 
     Command command = Command::NONE;
+
+
     if (type == "mode") {
-        if (value == "cancel") {
-            command = Command::STOP_MODE;
-        } else {
-            ModeName modeName = findModeName(value);
-            Controller::modeName = modeName;
-            command = Command::SELECT_MODE;
-        }
+        command = processModeCommand(value);
+    } else if (type == "action") {
+        command = processActionCommand(value);
     }
+
     stream.close();
     acknowledgeCommand();
+    return command;
+}
+
+Command EmulatorController::processModeCommand(string &value) {
+    Command command;
+    if (value == "cancel") {
+        command = Command::STOP_MODE;
+    } else {
+        ModeName modeName = findModeName(value);
+        Controller::modeName = modeName;
+        command = Command::SELECT_MODE;
+    }
     return command;
 }
 
@@ -70,4 +81,23 @@ ModeName EmulatorController::findModeName(string &modeNameString) {
 
 EmulatorController::~EmulatorController() {
     delete logger;
+}
+
+Command EmulatorController::processActionCommand(const string &value) {
+    if (value == "FORWARD") {
+        return Command::FORWARD;
+    }
+    if (value == "BACKWARD") {
+        return Command::BACKWARD;
+    }
+    if (value == "STOP") {
+        return Command::STOP;
+    }
+    if (value == "LEFT") {
+        return Command::LEFT;
+    }
+    if (value == "RIGHT") {
+        return Command::RIGHT;
+    }
+    return Command::NONE;
 }

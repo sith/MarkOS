@@ -20,6 +20,8 @@ public:
 
     const char *getModeNameString();
 
+    virtual void init()= 0;
+
     virtual void stop()= 0;
 
     static const char *getModeNameString(ModeName &modeName);
@@ -29,6 +31,8 @@ class NoopMode : public Mode {
 public:
     const void process() override {
     }
+
+    void init() override {}
 
     NoopMode() : Mode(ModeName::NONE) {};
 

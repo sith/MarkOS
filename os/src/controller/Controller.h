@@ -34,6 +34,10 @@ public:
     void deleteControllerCommandListener(ControllerCommandListener &controllerCommandListener);
 
     virtual Command readControllerCommand()=0;
+
+    //TODO must be friend
+    List<ControllerCommandListener> *getCommandListeners() const;
+
 };
 
 #endif //MARK1_CONTROLLER_H

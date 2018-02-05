@@ -28,6 +28,8 @@ public:
 
     void stop() override;
 
+    void init() override;
+
 };
 
 
