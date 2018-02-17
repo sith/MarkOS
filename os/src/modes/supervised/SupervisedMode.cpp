@@ -24,16 +24,16 @@ void SupervisedMode::onEvent(Command command) {
 
     switch (command) {
         case Command::FORWARD:
-            motorDriver->execute(Direction::FORWARD, Speed::MEDIUM);
+            motorDriver->execute(Direction::FORWARD, Speed::MEDIUM_SPEED);
             break;
         case Command::LEFT:
-            motorDriver->execute(Direction::TURN_LEFT, Speed::LOW);
+            motorDriver->execute(Direction::TURN_LEFT, Speed::LOW_SPEED);
             break;
         case Command::RIGHT:
-            motorDriver->execute(Direction::TURN_RIGHT, Speed::LOW);
+            motorDriver->execute(Direction::TURN_RIGHT, Speed::LOW_SPEED);
             break;
         case Command::BACKWARD:
-            motorDriver->execute(Direction::BACKWARD, Speed::MEDIUM);
+            motorDriver->execute(Direction::BACKWARD, Speed::MEDIUM_SPEED);
             break;
         case Command::STOP:
             motorDriver->stop();

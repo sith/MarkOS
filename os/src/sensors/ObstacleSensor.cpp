@@ -20,6 +20,7 @@ void ObstacleSensor::onEvent(unsigned long cycleNumber) {
         while (pIterator->hasNext()) {
             pIterator->next()->onEvent(obstacle);
         }
+        delete pIterator;
     }
 }
 

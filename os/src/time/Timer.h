@@ -15,8 +15,8 @@
 
 class Timer : public CycleListener {
     List<TimerTask> *tasks = new LinkedList<TimerTask>();
-    Logger *logger;
     Clock *clock;
+    Logger *logger;
 public:
 
     Timer();

@@ -13,9 +13,9 @@ enum Direction {
 };
 
 enum Speed {
-    LOW,
-    MEDIUM,
-    HIGH
+    LOW_SPEED,
+    MEDIUM_SPEED,
+    HIGH_SPEED
 };
 
 class MotorDriver {

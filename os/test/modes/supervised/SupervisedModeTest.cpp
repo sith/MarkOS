@@ -28,16 +28,16 @@ void SupervisedModeTest::TearDown() {
 }
 
 TEST_F(SupervisedModeTest, basicTest) {
-    EXPECT_CALL(mockMotorDriver, execute(Direction::FORWARD, Speed::MEDIUM)).Times(Exactly(1));
+    EXPECT_CALL(mockMotorDriver, execute(Direction::FORWARD, Speed::MEDIUM_SPEED)).Times(Exactly(1));
     supervisedMode->onEvent(Command::FORWARD);
 
-    EXPECT_CALL(mockMotorDriver, execute(Direction::BACKWARD, Speed::MEDIUM)).Times(Exactly(1));
+    EXPECT_CALL(mockMotorDriver, execute(Direction::BACKWARD, Speed::MEDIUM_SPEED)).Times(Exactly(1));
     supervisedMode->onEvent(Command::BACKWARD);
 
-    EXPECT_CALL(mockMotorDriver, execute(Direction::TURN_LEFT, Speed::LOW)).Times(Exactly(1));
+    EXPECT_CALL(mockMotorDriver, execute(Direction::TURN_LEFT, Speed::LOW_SPEED)).Times(Exactly(1));
     supervisedMode->onEvent(Command::LEFT);
 
-    EXPECT_CALL(mockMotorDriver, execute(Direction::TURN_RIGHT, Speed::LOW)).Times(Exactly(1));
+    EXPECT_CALL(mockMotorDriver, execute(Direction::TURN_RIGHT, Speed::LOW_SPEED)).Times(Exactly(1));
     supervisedMode->onEvent(Command::RIGHT);
 
     EXPECT_CALL(mockMotorDriver, stop()).Times(Exactly(1));
