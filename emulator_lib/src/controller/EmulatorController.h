@@ -16,7 +16,7 @@ using namespace std;
 class EmulatorController : public Controller, public RemoteCommand {
     ModeName findModeName(string &modeNameString);
 
-    Logger *logger;
+    Pointer<Logger> logger;
 
     void send(ofstream &ofstream) override;
 

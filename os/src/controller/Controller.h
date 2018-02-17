@@ -1,16 +1,16 @@
 #ifndef MARK1_CONTROLLER_H
 #define MARK1_CONTROLLER_H
 
-#include <List.h>
+#include <collections/List.h>
 #include <cycle/CycleListener.h>
-#include <LinkedList.h>
+#include <collections/LinkedList.h>
 #include "../modes/EmptyModeListener.h"
 #include "ControllerCommandListener.h"
 
 
 class Controller : public CycleListener {
     EmptyModeListener defaultModeListener;
-    List<ControllerCommandListener> *commandListeners = new LinkedList<ControllerCommandListener>;
+    Pointer<List<ControllerCommandListener>> commandListeners{new LinkedList<ControllerCommandListener>};
 
     void notifyOnCommand(Command command);
 

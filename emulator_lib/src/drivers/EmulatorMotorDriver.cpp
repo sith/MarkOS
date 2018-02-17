@@ -6,7 +6,7 @@
 #include "EmulatorMotorDriver.h"
 
 void EmulatorMotorDriver::execute(Direction direction, Speed speed) {
-    logger
+    logger.get()
             ->newLine()
             ->logAppend("Direction :")
             ->logAppend(EmulatorMotorDriver::direction[direction].c_str())
@@ -15,11 +15,9 @@ void EmulatorMotorDriver::execute(Direction direction, Speed speed) {
 }
 
 void EmulatorMotorDriver::stop() {
-    logger->newLine()->logAppend("Motor is stopped");
+    logger.get()->newLine()->logAppend("Motor is stopped");
 }
 
-EmulatorMotorDriver::EmulatorMotorDriver() : logger(LoggerFactory::newLogger("MotorDriver")) {}
+EmulatorMotorDriver::EmulatorMotorDriver() : logger{LoggerFactory::newLogger("MotorDriver")} {}
 
-EmulatorMotorDriver::~EmulatorMotorDriver() {
-    delete logger;
-}
+EmulatorMotorDriver::~EmulatorMotorDriver() {}

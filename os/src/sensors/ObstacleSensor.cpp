@@ -1,26 +1,23 @@
 
 #include "ObstacleSensor.h"
 
-ObstacleSensor::~ObstacleSensor() {
-    delete listeners;
-}
 
 void ObstacleSensor::addListener(ObstacleListener *obstacleListener) {
-    listeners->add(obstacleListener);
+    listeners.get()->add(obstacleListener);
 }
 
 void ObstacleSensor::removeListener(ObstacleListener *obstacleListener) {
-    listeners->removeByPointer(obstacleListener);
+    listeners.get()->removeByPointer(obstacleListener);
 }
 
 void ObstacleSensor::onEvent(unsigned long cycleNumber) {
     auto obstacle = read();
     if (obstacle.hasAnyObstacle()) {
-        auto pIterator = listeners->iterator();
+        auto iteratorPointer = listeners.get()->iterator();
+        auto pIterator = iteratorPointer.get();
         while (pIterator->hasNext()) {
             pIterator->next()->onEvent(obstacle);
         }
-        delete pIterator;
     }
 }
 

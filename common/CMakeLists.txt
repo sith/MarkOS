@@ -2,9 +2,13 @@ cmake_minimum_required(VERSION 3.9)
 project(common)
 
 add_library(${PROJECT_NAME}
-        src/List.h
-        src/LinkedList.h
-        src/LinkedList.h src/some.cpp src/Iterator.h)
+        src/collections/List.h
+        src/collections/LinkedList.h
+        src/collections/LinkedList.h
+        src/some.cpp
+        src/collections/Iterator.h
+        src/memory/Pointer.cpp
+        src/memory/Pointer.h)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 
 add_subdirectory(test)

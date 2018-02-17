@@ -6,7 +6,7 @@
 #define MARK1_CYCLE_H
 
 
-#include <LinkedList.h>
+#include <collections/LinkedList.h>
 #include "CycleListener.h"
 
 class Cycle {

@@ -6,8 +6,8 @@
 #define MARKOS_OBSTACLESENSOR_H
 
 #include <cycle/CycleListener.h>
-#include <List.h>
-#include <LinkedList.h>
+#include <collections/List.h>
+#include <collections/LinkedList.h>
 
 class Obstacle {
 public:
@@ -29,10 +29,8 @@ public:
 };
 
 class ObstacleSensor : public CycleListener {
-    List<ObstacleListener> *listeners = new LinkedList<ObstacleListener>;
+    Pointer<List<ObstacleListener>> listeners{new LinkedList<ObstacleListener>};
 public:
-    virtual ~ObstacleSensor();
-
     void addListener(ObstacleListener *obstacleListener);
 
     void removeListener(ObstacleListener *obstacleListener);

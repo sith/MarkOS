@@ -6,7 +6,7 @@
 #define MARK1_TIMER_H
 
 
-#include <LinkedList.h>
+#include <collections/LinkedList.h>
 #include <logger/Logger.h>
 #include "TimerListener.h"
 #include "TimerTask.h"
@@ -14,7 +14,7 @@
 #include "Clock.h"
 
 class Timer : public CycleListener {
-    List<TimerTask> *tasks = new LinkedList<TimerTask>();
+    Pointer<List<TimerTask>> tasks{new LinkedList<TimerTask>()};
     Clock *clock;
     Logger *logger;
 public:

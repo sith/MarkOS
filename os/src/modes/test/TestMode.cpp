@@ -8,7 +8,7 @@ const void TestMode::process() {
 }
 
 TestMode::TestMode() : Mode(ModeName::TEST),
-                       logger(LoggerFactory::newLogger("TestMode")),
+                       logger{LoggerFactory::newLogger("TestMode")},
                        directTransitionPrintState(printState),
                        directTransitionToWaitState(waitState) {
     waitState.setTransitionFunction(directTransitionPrintState);
@@ -17,9 +17,6 @@ TestMode::TestMode() : Mode(ModeName::TEST),
     currentState = &printState;
 }
 
-TestMode::~TestMode() {
-    delete logger;
-}
 
 void TestMode::stop() {
     waitState.stop();

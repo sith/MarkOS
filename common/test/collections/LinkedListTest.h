@@ -6,7 +6,7 @@
 #define MARKOS_LINKEDLISTTEST_H
 
 #include "gtest/gtest.h"
-#include "LinkedList.h"
+#include "collections/LinkedList.h"
 
 class LinkedListTest : public ::testing::Test {
 

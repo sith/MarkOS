@@ -47,7 +47,7 @@ Command EmulatorController::processModeCommand(string &value) {
 }
 
 EmulatorController::EmulatorController() : RemoteCommand("controller"),
-                                           logger(LoggerFactory::newLogger("Controller")) {}
+                                           logger{LoggerFactory::newLogger("Controller")} {}
 
 void EmulatorController::send(ofstream &ofstream) {
     string type;
@@ -78,10 +78,6 @@ ModeName EmulatorController::findModeName(string &modeNameString) {
     return NONE;
 }
 
-EmulatorController::~EmulatorController() {
-    delete logger;
-}
-
 Command EmulatorController::processActionCommand(const string &value) {
     if (value == "FORWARD") {
         return Command::FORWARD;
@@ -100,3 +96,5 @@ Command EmulatorController::processActionCommand(const string &value) {
     }
     return Command::NONE;
 }
+
+EmulatorController::~EmulatorController() {}

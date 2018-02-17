@@ -1,6 +1,6 @@
 #include <iostream>
-#include <List.h>
-#include <LinkedList.h>
+#include <collections/List.h>
+#include <collections/LinkedList.h>
 #include <controller/EmulatorController.h>
 #include <logger/StdOutLoggerFactory.h>
 #include <environment/Environment.h>

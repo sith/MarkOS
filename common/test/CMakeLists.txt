@@ -1,8 +1,8 @@
 
 add_executable(commons_tests
         main.cpp
-        LinkedListTest.h
-        LinkedListTest.cpp
+        collections/LinkedListTest.h
+        collections/LinkedListTest.cpp
         )
 
 #Link with GoogleTest

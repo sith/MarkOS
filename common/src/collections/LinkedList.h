@@ -45,8 +45,6 @@ class LinkedList : public List<T> {
                 right = nullptr;
             }
         }
-
-
         delete node;
         length--;
     }
@@ -68,20 +66,19 @@ class LinkedList : public List<T> {
 public:
     bool removeByPointer(T *e) override {
         bool deleted = false;
-        Iterator<T> *it = iterator();
+        Iterator<T> *it = iterator().get();
         while (it->hasNext()) {
             if (it->next() == e) {
                 it->remove();
                 deleted = true;
             }
         }
-        delete it;
         return deleted;
     }
 
     void add(T *e) override {
 
-        Node *node = new Node(e);
+        auto *node = new Node(e);
 
         if (right != nullptr) {
             right->next = node;
@@ -110,9 +107,8 @@ public:
         return pNode->data;
     }
 
-
-    Iterator<T> *iterator() override {
-        return new LinkedListIterator(*this);
+    Pointer<Iterator<T>> iterator() override {
+        return {new LinkedListIterator(*this)};
     }
 
     T *remove(int index) override {

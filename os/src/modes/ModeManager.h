@@ -18,7 +18,7 @@ class ModeManager : public ModeListener {
     NoopMode noopMode;
     SupervisedMode supervisedMode;
 
-    Logger *logger;
+    Pointer<Logger> logger;
 
     void stopCurrentMode();
 

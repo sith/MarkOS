@@ -1,17 +1,14 @@
-//
-// Created by Oleksandra Baukh on 1/19/18.
-//
-
 #include "Timer.h"
 #include "../environment/Environment.h"
 
 void Timer::addTimer(int milliseconds, TimerListener &timerListener) {
     logger->newLine()->logAppend("New timer task is accepted. Delay: ")->logAppend(milliseconds);
-    tasks->add(new TimerTask(clock->getTime() + milliseconds, &timerListener));
+    tasks.get()->add(new TimerTask(clock->getTime() + milliseconds, &timerListener));
 }
 
 void Timer::onEvent(unsigned long cycleNumber) {
-    auto *iterator = tasks->iterator();
+    auto iteratorPointer = tasks.get()->iterator();
+    auto *iterator = iteratorPointer.get();
     long currentTime = clock->getTime();
     while (iterator->hasNext()) {
         auto timerTask = iterator->next();
@@ -22,26 +19,22 @@ void Timer::onEvent(unsigned long cycleNumber) {
             delete doneTask;
         }
     }
-    delete iterator;
 }
 
 Timer::Timer() : Timer(Environment::getEnvironment().getClock()) {}
 
 Timer::Timer(Clock *clock) : clock(clock), logger(LoggerFactory::newLogger("Timer")) {}
 
-Timer::~Timer() {
-    delete tasks;
-}
-
 void Timer::removeTasksForListener(TimerListener &timerListener) {
-    Iterator<TimerTask> *iterator = tasks->iterator();
-
+    auto iteratorPointer = tasks.get()->iterator();
+    Iterator<TimerTask> *iterator = iteratorPointer.get();
     while (iterator->hasNext()) {
         TimerTask *timerTask = iterator->next();
         if (timerTask->getListener() == &timerListener) {
             delete iterator->remove();
         }
     }
+}
 
-    delete iterator;
+Timer::~Timer() {
 }

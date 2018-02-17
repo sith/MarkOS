@@ -27,7 +27,7 @@ class EmulatorMotorDriver : public MotorDriver {
             "HIGH_SPEED"
     };
 
-    Logger *logger;
+    Pointer<Logger> logger;
 
 public:
     EmulatorMotorDriver();

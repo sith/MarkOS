@@ -10,10 +10,6 @@ void Controller::addModeListener(ModeListener &ml) {
     modeListener = &ml;
 }
 
-Controller::~Controller() {
-    delete commandListeners;
-}
-
 void Controller::onEvent(unsigned long cycleNumber) {
     Command command = readControllerCommand();
     switch (command) {
@@ -51,21 +47,22 @@ Controller::Controller() {}
 
 // TODO unify listeners
 void Controller::addListener(ControllerCommandListener &controllerCommandListener) {
-    commandListeners->add(&controllerCommandListener);
+    commandListeners.get()->add(&controllerCommandListener);
 }
 
 void Controller::removeListener(ControllerCommandListener &controllerCommandListener) {
-    commandListeners->removeByPointer(&controllerCommandListener);
+    commandListeners.get()->removeByPointer(&controllerCommandListener);
 }
 
 void Controller::notifyOnCommand(Command command) {
-    Iterator<ControllerCommandListener> *iterator = commandListeners->iterator();
-    while (iterator->hasNext()) {
-        iterator->next()->onEvent(command);
+    auto iteratorPointer = commandListeners.get()->iterator();
+    while (iteratorPointer.get()->hasNext()) {
+        iteratorPointer.get()->next()->onEvent(command);
     }
-    delete iterator;
 }
 
 List<ControllerCommandListener> *Controller::getCommandListeners() const {
-    return commandListeners;
+    return commandListeners.get();
 }
+
+Controller::~Controller() {}

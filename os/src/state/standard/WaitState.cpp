@@ -26,12 +26,8 @@ void WaitState::onEvent() {
     stateStatus = DONE;
 }
 
-WaitState::~WaitState() {
-    delete logger;
-}
-
 WaitState::WaitState(int waitTime) : waitTime(waitTime),
-                                     logger(LoggerFactory::newLogger("WaitState")) {}
+                                     logger{LoggerFactory::newLogger("WaitState")} {}
 
 void WaitState::setTransitionFunction(TransitionFunction<EmptyStateValue> &transitionFunction) {
     WaitState::transitionFunction = &transitionFunction;
@@ -41,3 +37,5 @@ void WaitState::stop() {
     State::stop();
     Environment::getEnvironment().getTimer().removeTasksForListener(*this);
 }
+
+WaitState::~WaitState() {}

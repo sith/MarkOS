@@ -11,13 +11,12 @@ unsigned long Cycle::getCycle() const {
 
 void Cycle::next() {
     cycleNumber++;
-    Iterator<CycleListener> *iterator = listeners->iterator();
-    while (iterator->hasNext()) {
-        CycleListener *pListener = iterator->next();
+    auto iteratorPointer = listeners->iterator();
+    Iterator<CycleListener> &iterator = *iteratorPointer.get();
+    while (iterator.hasNext()) {
+        CycleListener *pListener = iterator.next();
         pListener->onEvent(cycleNumber);
     }
-
-    delete iterator;
 }
 
 List<CycleListener> *Cycle::getListeners() const {

@@ -5,6 +5,7 @@
 #ifndef CPP_PLAYGROUND_LIST_H
 #define CPP_PLAYGROUND_LIST_H
 
+#include <memory/Pointer.h>
 #include "Iterator.h"
 
 template<class T>
@@ -24,7 +25,7 @@ public:
 
     virtual int size()=0;
 
-    virtual Iterator<T> *iterator()=0;
+    virtual Pointer<Iterator<T>> iterator()=0;
 };
 
 #endif //CPP_PLAYGROUND_LIST_H

@@ -7,9 +7,10 @@
 
 #include <state/State.h>
 #include <logger/Logger.h>
+#include <memory/Pointer.h>
 
 class PrintState : public State {
-    Logger *logger;
+    Pointer<Logger> logger;
     TransitionFunction<EmptyStateValue> *transitionFunction;
 public:
     PrintState();

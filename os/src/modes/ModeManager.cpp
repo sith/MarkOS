@@ -33,12 +33,12 @@ void ModeManager::onModeChange(ModeName mode) {
 }
 
 void ModeManager::stopCurrentMode() {
-    logger->newLine()->logAppend("Delete mode: ")->logAppend(currentMode->getModeNameString());
+    logger.get()->newLine()->logAppend("Delete mode: ")->logAppend(currentMode->getModeNameString());
     currentMode->stop();
     currentMode = &noopMode;
 }
 
-ModeManager::ModeManager() : logger(LoggerFactory::newLogger("ModeManager")) {
+ModeManager::ModeManager() : logger{LoggerFactory::newLogger("ModeManager")} {
     currentMode = &noopMode;
 }
 
@@ -46,12 +46,10 @@ Mode &ModeManager::getCurrentMode() const {
     return *currentMode;
 }
 
-ModeManager::~ModeManager() {
-    delete currentMode;
-    delete logger;
-}
 
 void ModeManager::initMode(Mode &newMode) {
     currentMode = &newMode;
     currentMode->init();
 }
+
+ModeManager::~ModeManager() {}
