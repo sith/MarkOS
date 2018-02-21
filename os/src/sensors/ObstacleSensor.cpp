@@ -24,6 +24,6 @@ Obstacle::Obstacle(bool left, bool forward, bool right) : left(left), forward(fo
 
 Obstacle::Obstacle() {}
 
-bool Obstacle::hasAnyObstacle() {
+Obstacle::operator bool() const {
     return left || forward || right;
 }

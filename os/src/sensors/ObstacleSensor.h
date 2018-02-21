@@ -20,7 +20,8 @@ public:
 
     Obstacle();
 
-    bool hasAnyObstacle();
+    operator bool() const;
+
 };
 
 class ObstacleListener {
