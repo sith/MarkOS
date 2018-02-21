@@ -14,20 +14,22 @@
 class EmulatorMotorDriver : public MotorDriver {
 
 
-    std::string direction[4] = {
+    std::string direction[5] = {
+            "NONE",
             "FORWARD",
             "BACKWARD",
             "TURN_LEFT",
             "TURN_RIGHT"
     };
 
-    std::string speed[3] = {
+    std::string speed[4] = {
+            "NONE",
             "LOW_SPEED",
             "MEDIUM_SPEED",
             "HIGH_SPEED"
     };
 
-    Pointer<Logger> logger;
+    Logger *logger;
 
 public:
     EmulatorMotorDriver();

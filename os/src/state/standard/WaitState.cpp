@@ -1,7 +1,3 @@
-//
-// Created by Fedorov, Alex on 2/2/18.
-//
-
 #include <environment/Environment.h>
 #include "WaitState.h"
 
@@ -15,12 +11,10 @@ State *WaitState::execute() {
             return this;
         case DONE:
             stateStatus = WAITING;
-            EmptyStateValue e;
-            return transitionFunction->nextState(e);
+            return transitionFunction->nextState(EmptyStateValue::EMPTY_STATE_VALUE);
     }
     return this;
 }
-
 
 void WaitState::onEvent() {
     stateStatus = DONE;

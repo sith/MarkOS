@@ -4,7 +4,6 @@
 #include "test/TestMode.h"
 
 void ModeManager::onModeChange(ModeName mode) {
-
     if (currentMode->getModeName() == mode) {
         return;
     }
@@ -13,6 +12,7 @@ void ModeManager::onModeChange(ModeName mode) {
         case ModeName::CALIBRATION:
             break;
         case ModeName::FREE_RUN:
+            initMode(freeRunMode);
             break;
         case ModeName::SUPERVISED:
             initMode(supervisedMode);
@@ -25,7 +25,7 @@ void ModeManager::onModeChange(ModeName mode) {
             initMode(testMode);
             break;
         case ModeName::NONE:
-            currentMode = &noopMode;
+            initMode(noopMode);
             break;
         default:
             return;

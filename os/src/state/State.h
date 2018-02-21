@@ -29,8 +29,10 @@ public:
 };
 
 class EmptyStateValue {
-
+public:
+    static EmptyStateValue EMPTY_STATE_VALUE;
 };
+
 
 template<class T>
 class TransitionFunction {

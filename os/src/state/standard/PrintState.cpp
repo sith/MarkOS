@@ -7,8 +7,7 @@
 
 State *PrintState::execute() {
     logger.get()->newLine()->logAppend("Hello world");
-    EmptyStateValue e;
-    return transitionFunction->nextState(e);
+    return transitionFunction->nextState(EmptyStateValue::EMPTY_STATE_VALUE);
 }
 
 PrintState::PrintState() : logger(LoggerFactory::newLogger("PrintState")) {}

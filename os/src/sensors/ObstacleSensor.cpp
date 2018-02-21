@@ -12,12 +12,10 @@ void ObstacleSensor::removeListener(ObstacleListener *obstacleListener) {
 
 void ObstacleSensor::onEvent(unsigned long cycleNumber) {
     auto obstacle = read();
-    if (obstacle.hasAnyObstacle()) {
-        auto iteratorPointer = listeners.get()->iterator();
-        auto pIterator = iteratorPointer.get();
-        while (pIterator->hasNext()) {
-            pIterator->next()->onEvent(obstacle);
-        }
+    auto iteratorPointer = listeners.get()->iterator();
+    auto pIterator = iteratorPointer.get();
+    while (pIterator->hasNext()) {
+        pIterator->next()->onEvent(obstacle);
     }
 }
 

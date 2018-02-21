@@ -8,6 +8,7 @@
 
 #include <modes/test/TestMode.h>
 #include <modes/supervised/SupervisedMode.h>
+#include <modes/freerun/FreeRunMode.h>
 #include "ModeListener.h"
 #include "../logger/Logger.h"
 
@@ -17,6 +18,7 @@ class ModeManager : public ModeListener {
     TestMode testMode;
     NoopMode noopMode;
     SupervisedMode supervisedMode;
+    FreeRunMode freeRunMode;
 
     Pointer<Logger> logger;
 

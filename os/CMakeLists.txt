@@ -40,7 +40,18 @@ add_library(${PROJECT_NAME}
         src/state/standard/WaitState.cpp
         src/state/standard/WaitState.h
         src/controller/Command.h
-        src/controller/ControllerCommandListener.h src/logger/LoggerFactory.cpp src/modes/supervised/SupervisedMode.cpp src/modes/supervised/SupervisedMode.h src/drivers/MotorDriver.h src/sensors/ObstacleSensor.h src/sensors/ObstacleSensor.cpp)
+        src/controller/ControllerCommandListener.h
+        src/logger/LoggerFactory.cpp
+        src/modes/supervised/SupervisedMode.cpp
+        src/modes/supervised/SupervisedMode.h
+        src/drivers/MotorDriver.h
+        src/sensors/ObstacleSensor.h
+        src/sensors/ObstacleSensor.cpp
+        src/modes/freerun/FreeRunMode.cpp
+        src/modes/freerun/FreeRunMode.h
+        src/state/standard/ConditionalState.cpp
+        src/state/standard/ConditionalState.h
+        src/state/State.cpp)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)

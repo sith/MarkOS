@@ -3,6 +3,7 @@
 //
 
 
+#include <logger/LoggerFactory.h>
 #include "Controller.h"
 #include "../modes/ModeListener.h"
 
@@ -43,7 +44,7 @@ ModeName Controller::getModeName() const {
     return modeName;
 }
 
-Controller::Controller() {}
+Controller::Controller() : logger{LoggerFactory::newLogger("Controller")} {}
 
 // TODO unify listeners
 void Controller::addListener(ControllerCommandListener &controllerCommandListener) {

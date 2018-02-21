@@ -5,14 +5,16 @@
 #ifndef MARKOS_MOTORDRIVER_H
 #define MARKOS_MOTORDRIVER_H
 
-enum Direction {
-    FORWARD,
-    BACKWARD,
-    TURN_LEFT,
-    TURN_RIGHT
+enum class Direction {
+    NONE = 0,
+    FORWARD = 1,
+    BACKWARD = 2,
+    TURN_LEFT = 3,
+    TURN_RIGHT = 4
 };
 
-enum Speed {
+enum class Speed {
+    NONE,
     LOW_SPEED,
     MEDIUM_SPEED,
     HIGH_SPEED

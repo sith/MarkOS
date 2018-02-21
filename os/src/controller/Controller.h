@@ -4,6 +4,7 @@
 #include <collections/List.h>
 #include <cycle/CycleListener.h>
 #include <collections/LinkedList.h>
+#include <logger/Logger.h>
 #include "../modes/EmptyModeListener.h"
 #include "ControllerCommandListener.h"
 
@@ -11,11 +12,14 @@
 class Controller : public CycleListener {
     EmptyModeListener defaultModeListener;
     Pointer<List<ControllerCommandListener>> commandListeners{new LinkedList<ControllerCommandListener>};
-
+    //TODO remove me
+    Logger *logger;
     void notifyOnCommand(Command command);
 
 protected:
     ModeName modeName = NONE;
+
+    //TODO fix this
     ModeListener *modeListener = &defaultModeListener;
 
     ModeName getModeName() const;
