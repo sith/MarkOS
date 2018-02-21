@@ -66,7 +66,8 @@ class LinkedList : public List<T> {
 public:
     bool removeByPointer(T *e) override {
         bool deleted = false;
-        Iterator<T> *it = iterator().get();
+        auto pointer = iterator();
+        Iterator<T> *it = pointer.get();
         while (it->hasNext()) {
             if (it->next() == e) {
                 it->remove();
