@@ -21,10 +21,22 @@ enum class Speed {
 };
 
 class MotorDriver {
+protected:
+    Direction currentDirection = Direction::NONE;
+    Speed currentSpeed = Speed::NONE;
+
 public:
     virtual void execute(Direction direction, Speed speed)= 0;
 
     virtual void stop()= 0;
+
+    Direction getCurrentDirection() const {
+        return currentDirection;
+    }
+
+    Speed getCurrentSpeed() const {
+        return currentSpeed;
+    }
 };
 
 

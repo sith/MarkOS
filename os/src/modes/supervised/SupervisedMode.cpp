@@ -52,7 +52,7 @@ void SupervisedMode::init() {
 }
 
 void SupervisedMode::onEvent(Obstacle obstacle) {
-    if (obstacle.hasAnyObstacle()) {
+    if (obstacle && Environment::getEnvironment().getMotorDriver()->getCurrentDirection() != Direction::BACKWARD) {
         Environment::getEnvironment().getMotorDriver()->stop();
     }
 }
