@@ -8,7 +8,10 @@ add_library(${PROJECT_NAME}
         src/some.cpp
         src/collections/Iterator.h
         src/memory/Pointer.cpp
-        src/memory/Pointer.h)
+        src/memory/Pointer.h
+        src/filesystem/File.h
+        src/filesystem/FileSystem.h
+        )
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 
 add_subdirectory(test)
