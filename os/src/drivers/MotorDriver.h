@@ -14,17 +14,40 @@ enum class Direction {
 };
 
 enum class Speed {
-    NONE,
-    LOW_SPEED,
-    MEDIUM_SPEED,
-    HIGH_SPEED
+    NONE = 0,
+    LOW_SPEED = 1,
+    MEDIUM_SPEED = 2,
+    HIGH_SPEED = 3
 };
 
 class MotorDriver {
-public:
-    virtual void execute(Direction direction, Speed speed)= 0;
+    Speed currentSpeed = Speed::NONE;
+    Direction currentDirection = Direction::NONE;
+protected:
+    virtual void executeInternal(Direction direction, Speed speed)= 0;
 
-    virtual void stop()= 0;
+    virtual void stopInternal()= 0;
+
+public:
+    Speed getCurrentSpeed() const {
+        return currentSpeed;
+    }
+
+    Direction getCurrentDirection() const {
+        return currentDirection;
+    }
+
+    void execute(Direction direction, Speed speed) {
+        currentSpeed = speed;
+        currentDirection = direction;
+        executeInternal(direction, speed);
+    }
+
+    void stop() {
+        currentSpeed = Speed::NONE;
+        currentDirection = Direction::NONE;
+        stopInternal();
+    }
 };
 
 

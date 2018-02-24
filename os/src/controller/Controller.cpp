@@ -67,3 +67,5 @@ List<ControllerCommandListener> *Controller::getCommandListeners() const {
 }
 
 Controller::~Controller() {}
+
+Controller::Controller(Logger *logger) : logger(logger) {}

@@ -12,8 +12,6 @@
 
 
 class EmulatorMotorDriver : public MotorDriver {
-
-
     std::string direction[5] = {
             "NONE",
             "FORWARD",
@@ -36,9 +34,10 @@ public:
 
     virtual ~EmulatorMotorDriver();
 
-    void execute(Direction direction, Speed speed) override;
+protected:
+    void executeInternal(Direction direction, Speed speed) override;
 
-    void stop() override;
+    void stopInternal() override;
 };
 
 

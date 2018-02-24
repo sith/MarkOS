@@ -10,6 +10,9 @@
 
 class MockController : public Controller {
 public:
+
+    MockController(Logger *logger) : Controller(logger) {}
+
     MOCK_METHOD1(onEvent,
     void(unsigned long cycleNumber));
     MOCK_METHOD0(readControllerCommand,

@@ -10,7 +10,7 @@ using ::testing::Exactly;
 using ::testing::_;
 
 void ControllerTest::SetUp() {
-    testController = new TestController;
+    testController = new TestController(&logger);
     mockModeListener = new MockModeListener;
 
     controllerCommandListener1 = new MockControllerCommandListener;

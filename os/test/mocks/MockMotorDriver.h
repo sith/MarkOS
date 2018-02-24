@@ -10,13 +10,14 @@
 
 class MockMotorDriver : public MotorDriver {
 public:
-    MOCK_METHOD2(execute,
+    MOCK_METHOD2(executeInternal,
                  void(Direction
                          direction, Speed
                          speed));
 
-    MOCK_METHOD0(stop,
+    MOCK_METHOD0(stopInternal,
                  void());
 };
+
 
 #endif //MARKOS_MOCKMOTORDRIVER_H

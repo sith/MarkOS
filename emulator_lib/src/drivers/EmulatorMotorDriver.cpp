@@ -5,7 +5,13 @@
 #include <environment/Environment.h>
 #include "EmulatorMotorDriver.h"
 
-void EmulatorMotorDriver::execute(Direction direction, Speed speed) {
+EmulatorMotorDriver::EmulatorMotorDriver() : logger(LoggerFactory::newLogger("MotorDriver")) {}
+
+EmulatorMotorDriver::~EmulatorMotorDriver() {
+    delete logger;
+}
+
+void EmulatorMotorDriver::executeInternal(Direction direction, Speed speed) {
     logger
             ->newLine()
             ->logAppend("Direction :")
@@ -14,12 +20,6 @@ void EmulatorMotorDriver::execute(Direction direction, Speed speed) {
             ->logAppend(EmulatorMotorDriver::speed[static_cast<int>(speed)].c_str());
 }
 
-void EmulatorMotorDriver::stop() {
+void EmulatorMotorDriver::stopInternal() {
     logger->newLine()->logAppend("Motor is stopped");
-}
-
-EmulatorMotorDriver::EmulatorMotorDriver() : logger(LoggerFactory::newLogger("MotorDriver")) {}
-
-EmulatorMotorDriver::~EmulatorMotorDriver() {
-    delete logger;
 }

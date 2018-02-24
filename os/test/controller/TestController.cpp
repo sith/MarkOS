@@ -17,3 +17,7 @@ void TestController::setCommand(Command command) {
 void TestController::setModeName(ModeName modeName) {
     Controller::modeName = modeName;
 }
+
+TestController::TestController(Logger *logger) : Controller(logger) {
+
+}

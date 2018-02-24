@@ -11,16 +11,14 @@
 
 class Obstacle {
 public:
-    //TODO doesn't have to be public
     bool left;
     bool forward;
     bool right;
 
-    Obstacle(bool left, bool forward, bool right);
+    Obstacle(bool left = false, bool forward = false, bool right = false);
 
-    Obstacle();
 
-    bool hasAnyObstacle();
+    operator bool();
 };
 
 class ObstacleListener {

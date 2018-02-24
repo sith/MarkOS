@@ -25,6 +25,9 @@ protected:
     ModeName getModeName() const;
 
 public:
+    Controller(Logger *logger);
+
+public:
     Controller();
 
     void onEvent(unsigned long cycleNumber) override;
