@@ -22,6 +22,6 @@ void ObstacleSensor::onEvent(unsigned long cycleNumber) {
 
 Obstacle::Obstacle(bool left, bool forward, bool right) : left(left), forward(forward), right(right) {}
 
-Obstacle::operator bool() {
+Obstacle::operator bool() const {
     return left || forward || right;
 }

@@ -18,12 +18,12 @@ public:
     Obstacle(bool left = false, bool forward = false, bool right = false);
 
 
-    operator bool();
+    operator bool() const;
 };
 
 class ObstacleListener {
 public:
-    virtual void onEvent(Obstacle obstacle) = 0;
+    virtual void onEvent(const Obstacle &obstacle) = 0;
 };
 
 class ObstacleSensor : public CycleListener {

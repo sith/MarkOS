@@ -26,7 +26,7 @@ void FreeRunMode::stop() {
     Environment::getEnvironment().getObstacleSensor()->removeListener(this);
 }
 
-void FreeRunMode::onEvent(Obstacle obstacle) {
+void FreeRunMode::onEvent(const Obstacle &obstacle) {
     if (obstacle.left) {
         motorDriver->execute(Direction::TURN_RIGHT, Speed::LOW_SPEED);
     } else if (obstacle.right) {

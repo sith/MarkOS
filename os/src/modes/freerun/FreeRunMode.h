@@ -24,7 +24,7 @@ public:
     ~FreeRunMode() override;
 
 private:
-    void onEvent(Obstacle obstacle) override;
+    void onEvent(const Obstacle &obstacle) override;
 
 public:
     const void process() override;

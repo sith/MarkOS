@@ -24,7 +24,7 @@ public:
 
     void onEvent(Command command) override;
 
-    void onEvent(Obstacle obstacle) override;
+    void onEvent(const Obstacle &obstacle) override;
 
     ~SupervisedMode() override;
 

@@ -51,7 +51,7 @@ void SupervisedMode::init() {
     Environment::getEnvironment().getObstacleSensor()->addListener(this);
 }
 
-void SupervisedMode::onEvent(Obstacle obstacle) {
+void SupervisedMode::onEvent(const Obstacle &obstacle) {
     if (obstacle && Environment::getEnvironment().getMotorDriver()->getCurrentDirection() != Direction::BACKWARD) {
         Environment::getEnvironment().getMotorDriver()->stop();
     }
