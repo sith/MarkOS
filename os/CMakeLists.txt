@@ -51,7 +51,7 @@ add_library(${PROJECT_NAME}
         src/modes/freerun/FreeRunMode.h
         src/state/standard/ConditionalState.cpp
         src/state/standard/ConditionalState.h
-        src/state/State.cpp)
+        src/state/State.cpp src/missions/MissionRecorder.h src/missions/MissionRecorderManager.cpp src/missions/MissionRecorderManager.h src/missions/TimeBasedMissionRecorder.cpp src/missions/TimeBasedMissionRecorder.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)

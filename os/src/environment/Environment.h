@@ -8,6 +8,8 @@
 
 #include <modes/ModeManager.h>
 #include <sensors/ObstacleSensor.h>
+#include <filesystem/FileSystem.h>
+#include <missions/MissionRecorderManager.h>
 #include "../controller/Controller.h"
 #include "../logger/LoggerFactory.h"
 #include "../Random.h"
@@ -27,8 +29,18 @@ protected:
     Clock *clock;
     MotorDriver *motorDriver;
     ObstacleSensor *obstacleSensor;
-
+    FileSystem *fileSystem;
+    MissionRecorderManager *missionRecorderManager;
 public:
+
+    FileSystem *getFileSystem() const;
+
+    void setFileSystem(FileSystem *fileSystem);
+
+    MissionRecorderManager *getMissionRecorderManager() const;
+
+    void setMissionRecorderManager(MissionRecorderManager *missionRecorderManager);
+
     ModeManager &getModeManager();
 
     Cycle &getCycle();
