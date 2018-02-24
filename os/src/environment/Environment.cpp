@@ -61,8 +61,6 @@ void Environment::init() {
     cycle->getListeners()->add(obstacleSensor);
 
     controller->addModeListener(*modeManager);
-
-    missionManager->init();
 }
 
 MotorDriver *Environment::getMotorDriver() const {
@@ -89,11 +87,11 @@ void Environment::setFileSystem(FileSystem *fileSystem) {
     Environment::fileSystem = fileSystem;
 }
 
-MissionManager *Environment::getMissionManager() const {
-    return missionManager;
+MissionRecorderManager *Environment::getMissionRecorderManager() const {
+    return missionRecorderManager;
 }
 
-void Environment::setMissionManager(MissionManager *missionManager) {
-    Environment::missionManager = missionManager;
+void Environment::setMissionRecorderManager(MissionRecorderManager *missionRecorderManager) {
+    Environment::missionRecorderManager = missionRecorderManager;
 }
 
