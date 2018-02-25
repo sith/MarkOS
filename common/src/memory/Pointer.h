@@ -15,6 +15,21 @@ class Pointer {
 public:
     Pointer(T *pointer) : pointer(pointer) {}
 
+    Pointer(Pointer &pointerToMove) noexcept {
+        pointer = pointerToMove.pointer;
+    }
+
+    Pointer(Pointer &&pointerToMove) noexcept {
+        pointer = pointerToMove.pointer;
+        pointerToMove.pointer = nullptr;
+    }
+
+    Pointer &operator=(Pointer &&pointerToMove) noexcept {
+        pointer = pointerToMove.pointer;
+        pointerToMove.pointer = nullptr;
+        return *this;
+    }
+
     virtual ~Pointer() {
         delete pointer;
         pointer = nullptr;
