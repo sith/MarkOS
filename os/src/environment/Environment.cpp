@@ -86,3 +86,11 @@ FileSystem *Environment::getFileSystem() const {
 void Environment::setFileSystem(FileSystem *fileSystem) {
     Environment::fileSystem = fileSystem;
 }
+
+MemoryMonitor *Environment::getMemoryMonitor() const {
+    return memoryMonitor;
+}
+
+void Environment::setMemoryMonitor(MemoryMonitor *memoryMonitor) {
+    Environment::memoryMonitor = memoryMonitor;
+}

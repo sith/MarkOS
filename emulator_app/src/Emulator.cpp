@@ -10,11 +10,13 @@
 #include <controller/EmulatorController.h>
 #include <drivers/EmulatorMotorDriver.h>
 #include <sensors/EmulatorObstacleSensor.h>
+#include <memory/OSMemoryMonitor.h>
 
 
 void setup() {
     LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
 
+    Environment::getEnvironment().setMemoryMonitor(new OSMemoryMonitor);
     Environment::getEnvironment().setController(new EmulatorController);
     Environment::getEnvironment().setMotorDriver(new EmulatorMotorDriver);
     Environment::getEnvironment().setObstacleSensor(new EmulatorObstacleSensor);

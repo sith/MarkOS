@@ -9,6 +9,7 @@
 #include <modes/ModeManager.h>
 #include <sensors/ObstacleSensor.h>
 #include <filesystem/FileSystem.h>
+#include <memory/MemoryMonitor.h>
 #include "../controller/Controller.h"
 #include "../logger/LoggerFactory.h"
 #include "../Random.h"
@@ -29,7 +30,11 @@ protected:
     MotorDriver *motorDriver;
     ObstacleSensor *obstacleSensor;
     FileSystem *fileSystem;
+    MemoryMonitor *memoryMonitor;
 public:
+    MemoryMonitor *getMemoryMonitor() const;
+
+    void setMemoryMonitor(MemoryMonitor *memoryMonitor);
 
     FileSystem *getFileSystem() const;
 
