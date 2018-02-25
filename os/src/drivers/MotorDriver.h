@@ -5,6 +5,10 @@
 #ifndef MARKOS_MOTORDRIVER_H
 #define MARKOS_MOTORDRIVER_H
 
+#include <collections/List.h>
+#include <memory/Pointer.h>
+#include <collections/LinkedList.h>
+
 enum class Direction {
     NONE = 0,
     FORWARD = 1,
@@ -20,9 +24,17 @@ enum class Speed {
     HIGH_SPEED = 3
 };
 
+class MotorDriverCommandListener {
+public:
+    virtual void onEvent(Direction direction, Speed speed)= 0;
+
+    virtual void onStop()= 0;
+};
+
 class MotorDriver {
     Speed currentSpeed = Speed::NONE;
     Direction currentDirection = Direction::NONE;
+    Pointer<List<MotorDriverCommandListener>> listeners{new LinkedList<MotorDriverCommandListener>};
 protected:
     virtual void executeInternal(Direction direction, Speed speed)= 0;
 
