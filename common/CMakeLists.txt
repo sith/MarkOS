@@ -11,7 +11,7 @@ add_library(${PROJECT_NAME}
         src/memory/Pointer.h
         src/filesystem/File.h
         src/filesystem/FileSystem.h
-        )
+        src/string/String.cpp src/string/String.h src/memory/move.h)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 
 add_subdirectory(test)

@@ -86,12 +86,3 @@ FileSystem *Environment::getFileSystem() const {
 void Environment::setFileSystem(FileSystem *fileSystem) {
     Environment::fileSystem = fileSystem;
 }
-
-MissionRecorderManager *Environment::getMissionRecorderManager() const {
-    return missionRecorderManager;
-}
-
-void Environment::setMissionRecorderManager(MissionRecorderManager *missionRecorderManager) {
-    Environment::missionRecorderManager = missionRecorderManager;
-}
-
