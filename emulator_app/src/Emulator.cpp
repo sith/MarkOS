@@ -11,16 +11,16 @@
 #include <drivers/EmulatorMotorDriver.h>
 #include <sensors/EmulatorObstacleSensor.h>
 #include <memory/OSMemoryMonitor.h>
+#include "EmulatorEnvironment.h"
 
+
+extern EmulatorEnvironment environment;
 
 void setup() {
     LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
 
-    Environment::getEnvironment().setMemoryMonitor(new OSMemoryMonitor);
-    Environment::getEnvironment().setController(new EmulatorController);
-    Environment::getEnvironment().setMotorDriver(new EmulatorMotorDriver);
-    Environment::getEnvironment().setObstacleSensor(new EmulatorObstacleSensor);
-    Environment::getEnvironment().setClock(new SystemClock);
+    EmulatorEnvironment environment = {};
+    Environment::setEnvironment(environment);
     Environment::getEnvironment().init();
 
     LoggerFactory::newLogger("Main")->newLine()->logAppend("App is started");

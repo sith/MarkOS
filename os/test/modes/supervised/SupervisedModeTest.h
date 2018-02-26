@@ -12,14 +12,18 @@
 #include "../../mocks/MockController.h"
 #include "../../mocks/MockLogger.h"
 #include "../../mocks/MockObstacleSensor.h"
+#include "../../mocks/MockEnvironment.h"
 
 class SupervisedModeTest : public testing::Test {
+
 protected:
+    MockEnvironment environment;
+
     void SetUp() override;
 
     void TearDown() override;
 
-    SupervisedMode *supervisedMode;
+    SupervisedMode supervisedMode;
     MockMotorDriver mockMotorDriver;
     MockLogger mockLogger;
     MockController mockController{&mockLogger};

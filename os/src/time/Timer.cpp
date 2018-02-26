@@ -19,7 +19,7 @@ void Timer::onEvent(unsigned long cycleNumber) {
     }
 }
 
-Timer::Timer() : Timer(Environment::getEnvironment().getClock()) {}
+Timer::Timer() = default;
 
 Timer::Timer(Clock *clock) : clock(clock) {}
 

@@ -10,10 +10,6 @@ void LoggerFactory::setLoggerFactory(LoggerFactory *loggerFactory) {
     LoggerFactory::loggerFactory = loggerFactory;
 }
 
-Logger *LoggerFactory::createLogger(const char *name) {
-    return nullptr;
-}
-
 Logger *LoggerFactory::newLogger(const char *name) {
     return loggerFactory->createLogger(name);
 }

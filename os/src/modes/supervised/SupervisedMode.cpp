@@ -10,9 +10,9 @@ const void SupervisedMode::process() {
 }
 
 void SupervisedMode::stop() {
-    Environment::getEnvironment().getMotorDriver()->stop();
-    Environment::getEnvironment().getController()->removeListener(*this);
-    Environment::getEnvironment().getObstacleSensor()->removeListener(this);
+    Environment::getEnvironment().getMotorDriver().stop();
+    Environment::getEnvironment().getController().removeListener(*this);
+    Environment::getEnvironment().getObstacleSensor().removeListener(this);
 }
 
 SupervisedMode::SupervisedMode() : Mode(ModeName::SUPERVISED) {
@@ -20,7 +20,7 @@ SupervisedMode::SupervisedMode() : Mode(ModeName::SUPERVISED) {
 
 void SupervisedMode::onEvent(Command command) {
 
-    auto motorDriver = Environment::getEnvironment().getMotorDriver();
+    auto motorDriver = &Environment::getEnvironment().getMotorDriver();
 
     switch (command) {
         case Command::FORWARD:
@@ -47,12 +47,12 @@ SupervisedMode::~SupervisedMode() {
 }
 
 void SupervisedMode::init() {
-    Environment::getEnvironment().getController()->addListener(*this);
-    Environment::getEnvironment().getObstacleSensor()->addListener(this);
+    Environment::getEnvironment().getController().addListener(*this);
+    Environment::getEnvironment().getObstacleSensor().addListener(this);
 }
 
 void SupervisedMode::onEvent(const Obstacle &obstacle) {
-    if (obstacle && Environment::getEnvironment().getMotorDriver()->getCurrentDirection() != Direction::BACKWARD) {
-        Environment::getEnvironment().getMotorDriver()->stop();
+    if (obstacle && Environment::getEnvironment().getMotorDriver().getCurrentDirection() != Direction::BACKWARD) {
+        Environment::getEnvironment().getMotorDriver().stop();
     }
 }
