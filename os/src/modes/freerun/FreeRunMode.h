@@ -13,9 +13,6 @@
 #include <state/standard/NoopState.h>
 
 class FreeRunMode : public Mode, ObstacleListener {
-    MotorDriver *motorDriver;
-
-    Logger* logger;
     State *currentState;
     NoopState noopState;
 public:

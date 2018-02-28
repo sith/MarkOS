@@ -12,7 +12,6 @@
 
 class WaitState : public State, public TimerListener {
     int waitTime;
-    Pointer<Logger> logger;
     TransitionFunction<EmptyStateValue> *transitionFunction;
 public:
     void setTransitionFunction(TransitionFunction<EmptyStateValue> &transitionFunction);

@@ -10,7 +10,6 @@
 #include <memory/Pointer.h>
 
 class PrintState : public State {
-    Pointer<Logger> logger;
     TransitionFunction<EmptyStateValue> *transitionFunction;
 public:
     PrintState();

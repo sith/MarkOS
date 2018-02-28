@@ -12,8 +12,7 @@
 class Controller : public CycleListener {
     EmptyModeListener defaultModeListener;
     Pointer<List<ControllerCommandListener>> commandListeners{new LinkedList<ControllerCommandListener>};
-    //TODO remove me
-    Logger *logger;
+
     void notifyOnCommand(Command command);
 
 protected:
@@ -23,9 +22,6 @@ protected:
     ModeListener *modeListener = &defaultModeListener;
 
     ModeName getModeName() const;
-
-public:
-    Controller(Logger *logger);
 
 public:
     Controller();

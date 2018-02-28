@@ -10,7 +10,6 @@ enum ModeName {
     FREE_RUN,
     CALIBRATION,
     FIXED_ROUTE,
-    EXPLORER,
-    TEST
+    EXPLORER
 };
 #endif //MARK1_MODENAME_H

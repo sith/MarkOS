@@ -21,8 +21,6 @@ add_library(${PROJECT_NAME}
         src/modes/ModeName.h
         src/modes/ModeManager.h
         src/modes/ModeManager.cpp
-        src/modes/test/TestMode.h
-        src/modes/test/TestMode.cpp
         src/state/State.h
         src/state/standard/NoopState.h
         src/state/standard/NoopState.cpp

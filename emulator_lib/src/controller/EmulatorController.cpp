@@ -72,9 +72,6 @@ ModeName EmulatorController::findModeName(string &modeNameString) {
     if (modeNameString == "EXPLORER") {
         return EXPLORER;
     }
-    if (modeNameString == "TEST") {
-        return TEST;
-    }
     return NONE;
 }
 

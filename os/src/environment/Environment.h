@@ -18,59 +18,36 @@
 #include "../time/Timer.h"
 
 class Environment {
-    static Environment environment;
+    static Environment *environment;
 protected:
-    ModeManager *modeManager;
-    Cycle *cycle;
-    Timer *timer;
-
-    Controller *controller;
-    Random *random;
-    Clock *clock;
-    MotorDriver *motorDriver;
-    ObstacleSensor *obstacleSensor;
-    FileSystem *fileSystem;
-    MemoryMonitor *memoryMonitor;
 public:
-    MemoryMonitor *getMemoryMonitor() const;
 
-    void setMemoryMonitor(MemoryMonitor *memoryMonitor);
-
-    FileSystem *getFileSystem() const;
-
-    void setFileSystem(FileSystem *fileSystem);
-
-    ModeManager &getModeManager();
-
-    Cycle &getCycle();
-
-    Timer &getTimer();
-
-    Controller *getController();
-
-    Random *getRandom();
-
-    Clock *getClock();
-
-    MotorDriver *getMotorDriver() const;
-
-    void setMotorDriver(MotorDriver *motorDriver);
 
     static Environment &getEnvironment();
 
-    void setController(Controller *controller);
+    virtual ModeManager &getModeManager()= 0;
 
-    void setRandom(Random *random);
-
-    void setClock(Clock *clock);
-
-    ObstacleSensor *getObstacleSensor() const;
-
-    void setObstacleSensor(ObstacleSensor *obstacleSensor);
+    virtual Cycle &getCycle()= 0;
 
     void init();
 
     void loop();
+
+    virtual Timer &getTimer()= 0;
+
+    virtual Controller &getController()  = 0;
+
+    virtual Clock &getClock()  =0;
+
+    virtual MotorDriver &getMotorDriver()  = 0;
+
+    virtual ObstacleSensor &getObstacleSensor()  = 0;
+
+    virtual FileSystem &getFileSystem()  = 0;
+
+    virtual MemoryMonitor &getMemoryMonitor()  =0;
+
+    static void setEnvironment(Environment &environment);
 };
 
 

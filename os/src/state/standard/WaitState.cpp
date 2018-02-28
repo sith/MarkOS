@@ -20,8 +20,7 @@ void WaitState::onEvent() {
     stateStatus = DONE;
 }
 
-WaitState::WaitState(int waitTime) : waitTime(waitTime),
-                                     logger{LoggerFactory::newLogger("WaitState")} {}
+WaitState::WaitState(int waitTime) : waitTime(waitTime) {}
 
 void WaitState::setTransitionFunction(TransitionFunction<EmptyStateValue> &transitionFunction) {
     WaitState::transitionFunction = &transitionFunction;

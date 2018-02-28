@@ -9,7 +9,7 @@ add_executable(${PROJECT_NAME}
         src/Emulator.cpp
         src/client/CommandManager.cpp
         src/client/CommandManager.h
-        )
+        src/EmulatorEnvironment.cpp src/EmulatorEnvironment.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
