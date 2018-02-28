@@ -16,7 +16,7 @@ class Controller : public CycleListener {
     void notifyOnCommand(Command command);
 
 protected:
-    ModeName modeName = NONE;
+    ModeName modeName = ModeName::NONE;
 
     //TODO fix this
     ModeListener *modeListener = &defaultModeListener;

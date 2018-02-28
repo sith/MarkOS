@@ -4,7 +4,7 @@
 
 #ifndef MARK1_MODENAME_H
 #define MARK1_MODENAME_H
-enum ModeName {
+enum class ModeName {
     NONE,
     SUPERVISED,
     FREE_RUN,

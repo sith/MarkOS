@@ -8,7 +8,7 @@
 template<class T>
 class TransitionFunction;
 
-enum StateStatus {
+enum class StateStatus {
     WAITING,
     IN_PROGRESS,
     DONE,
@@ -17,14 +17,14 @@ enum StateStatus {
 
 class State {
 protected:
-    StateStatus stateStatus = WAITING;
+    StateStatus stateStatus = StateStatus::WAITING;
 public:
     virtual ~State() {}
 
     virtual State *execute()= 0;
 
     virtual void stop() {
-        stateStatus = WAITING;
+        stateStatus = StateStatus::WAITING;
     };
 };
 

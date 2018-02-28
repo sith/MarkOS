@@ -32,7 +32,7 @@ void Controller::onEvent(unsigned long cycleNumber) {
             notifyOnCommand(Command::STOP);
             break;
         case Command::STOP_MODE:
-            modeListener->onModeChange(NONE);
+            modeListener->onModeChange(ModeName::NONE);
             break;
         case Command::SELECT_MODE:
             modeListener->onModeChange(getModeName());

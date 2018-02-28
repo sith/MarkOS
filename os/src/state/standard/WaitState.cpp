@@ -3,21 +3,21 @@
 
 State *WaitState::execute() {
     switch (stateStatus) {
-        case WAITING:
+        case StateStatus::WAITING:
             Environment::getEnvironment().getTimer().addTimer(waitTime, *this);
-            stateStatus = IN_PROGRESS;
+            stateStatus = StateStatus::IN_PROGRESS;
             return this;
-        case IN_PROGRESS:
+        case StateStatus::IN_PROGRESS:
             return this;
-        case DONE:
-            stateStatus = WAITING;
+        case StateStatus::DONE:
+            stateStatus = StateStatus::WAITING;
             return transitionFunction->nextState(EmptyStateValue::EMPTY_STATE_VALUE);
     }
     return this;
 }
 
 void WaitState::onEvent() {
-    stateStatus = DONE;
+    stateStatus = StateStatus::DONE;
 }
 
 WaitState::WaitState(int waitTime) : waitTime(waitTime) {}

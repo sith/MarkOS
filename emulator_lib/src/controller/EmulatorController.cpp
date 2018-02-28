@@ -58,21 +58,21 @@ void EmulatorController::send(ofstream &ofstream) {
 
 ModeName EmulatorController::findModeName(string &modeNameString) {
     if (modeNameString == "SUPERVISED") {
-        return SUPERVISED;
+        return ModeName::SUPERVISED;
     }
     if (modeNameString == "FREE_RUN") {
-        return FREE_RUN;
+        return ModeName::FREE_RUN;
     }
     if (modeNameString == "CALIBRATION") {
-        return CALIBRATION;
+        return ModeName::CALIBRATION;
     }
     if (modeNameString == "EXPLORER") {
-        return FIXED_ROUTE;
+        return ModeName::FIXED_ROUTE;
     }
     if (modeNameString == "EXPLORER") {
-        return EXPLORER;
+        return ModeName::EXPLORER;
     }
-    return NONE;
+    return ModeName::NONE;
 }
 
 Command EmulatorController::processActionCommand(const string &value) {
