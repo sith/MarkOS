@@ -50,9 +50,9 @@ add_library(${PROJECT_NAME}
         src/state/standard/ConditionalState.cpp
         src/state/standard/ConditionalState.h
         src/state/State.cpp
-        src/missioncontrol/Mission.cpp
-        src/missioncontrol/Mission.h
-        src/missioncontrol/MissionManager.h src/missioncontrol/MissionManager.cpp src/memory/MemoryMonitor.h)
+        src/missions/MissionRecorder.h
+        src/missions/MissionRecorder.cpp
+        src/memory/MemoryMonitor.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)
