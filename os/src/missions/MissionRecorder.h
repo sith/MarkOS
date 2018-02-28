@@ -5,8 +5,14 @@
 #ifndef MARKOS_MISSIONRECORDER_H
 #define MARKOS_MISSIONRECORDER_H
 
+#include "types.h"
 
 class MissionRecorder {
+    uint8 id;
+public:
+    MissionRecorder(uint8 id);
+
+    virtual ~MissionRecorder();
 
 public:
     virtual void record()= 0;
@@ -14,6 +20,8 @@ public:
     virtual void replay()= 0;
 
     virtual void stop()= 0;
+
+    uint8 getId() const;
 };
 
 

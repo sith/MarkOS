@@ -8,10 +8,6 @@ Pointer<File> OSFileSystem::openFile(const char *path) {
     return Pointer<File>(nullptr);
 }
 
-Pointer<List<Pointer<File>>> OSFileSystem::listFiles() {
-    return Pointer<List<Pointer<File>>>(nullptr);
-}
-
 void OSFileSystem::deleteFile(const char *path) {
 
 }

@@ -11,9 +11,8 @@
 #include "File.h"
 
 class FileSystem {
+public:
     virtual Pointer<File> openFile(const char *path)= 0;
-
-    virtual Pointer<List<Pointer<File>>> listFiles()= 0;
 
     virtual void deleteFile(const char *path)= 0;
 

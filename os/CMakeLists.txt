@@ -52,10 +52,10 @@ add_library(${PROJECT_NAME}
         src/state/State.cpp
         src/missions/MissionRecorder.h
         src/missions/MissionRecorder.cpp
-        src/memory/MemoryMonitor.h)
+        src/memory/MemoryMonitor.h src/types.h src/missions/MissionManager.h src/missions/FileSystemMissionManager.cpp src/missions/FileSystemMissionManager.h src/constants.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)
 
 install(DIRECTORY "src/"
-        DESTINATION "/Users/oleksandrabaukh/workspace/myLibs/MarkOS_os")
+        DESTINATION "/Users/oleksandrabaukh/workspace/myLibs/MarkOS_os" PATTERN 'types.h' EXCLUDE)

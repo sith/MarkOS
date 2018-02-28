@@ -11,8 +11,6 @@
 class OSFileSystem : public FileSystem {
     Pointer<File> openFile(const char *path) override;
 
-    Pointer<List<Pointer<File>>> listFiles() override;
-
     void deleteFile(const char *path) override;
 
     void createDirectory(const char *path) override;
