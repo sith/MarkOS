@@ -13,8 +13,6 @@
 #include <state/standard/NoopState.h>
 
 class FreeRunMode : public Mode, ObstacleListener {
-    State *currentState;
-    NoopState noopState;
 public:
     FreeRunMode();
 

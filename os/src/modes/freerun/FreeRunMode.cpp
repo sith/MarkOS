@@ -10,18 +10,15 @@ FreeRunMode::FreeRunMode() : Mode(ModeName::FREE_RUN) {}
 FreeRunMode::~FreeRunMode() {}
 
 const void FreeRunMode::process() {
-    currentState->execute();
 }
 
 void FreeRunMode::init() {
-    currentState = &noopState;
     Environment::getEnvironment().getObstacleSensor().addListener(this);
     Environment::getEnvironment().getMotorDriver().execute(Direction::FORWARD, Speed::MEDIUM_SPEED);
 }
 
 void FreeRunMode::stop() {
     Environment::getEnvironment().getMotorDriver().stop();
-    currentState->stop();
     Environment::getEnvironment().getObstacleSensor().removeListener(this);
 }
 
