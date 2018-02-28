@@ -44,7 +44,7 @@ ModeName Controller::getModeName() const {
     return modeName;
 }
 
-Controller::Controller() : logger{LoggerFactory::newLogger("Controller")} {}
+Controller::Controller() {}
 
 // TODO unify listeners
 void Controller::addListener(ControllerCommandListener &controllerCommandListener) {
@@ -67,5 +67,3 @@ List<ControllerCommandListener> *Controller::getCommandListeners() const {
 }
 
 Controller::~Controller() {}
-
-Controller::Controller(Logger *logger) : logger(logger) {}

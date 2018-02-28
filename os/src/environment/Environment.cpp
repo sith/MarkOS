@@ -12,7 +12,8 @@ void Environment::loop() {
 }
 
 void Environment::init() {
-    getCycle().getListeners()->add(&getController());
+    auto pController = &getController();
+    getCycle().getListeners()->add(pController);
     getCycle().getListeners()->add(&getTimer());
     getCycle().getListeners()->add(&getObstacleSensor());
 

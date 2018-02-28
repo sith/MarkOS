@@ -9,15 +9,13 @@
 #include <memory/Pointer.h>
 
 class File {
-
 public:
     virtual ~File() {
     }
 
-private:
-    int readInt();
+    virtual int readInt()= 0;
 
-    Pointer<const char *> readString();
+    virtual Pointer<const char *> readString()= 0;
 };
 
 

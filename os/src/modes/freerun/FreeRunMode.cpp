@@ -5,8 +5,7 @@
 #include <environment/Environment.h>
 #include "FreeRunMode.h"
 
-FreeRunMode::FreeRunMode() : Mode(ModeName::FREE_RUN),
-                             logger{LoggerFactory::newLogger("FreeRunMode")} {}
+FreeRunMode::FreeRunMode() : Mode(ModeName::FREE_RUN) {}
 
 FreeRunMode::~FreeRunMode() {}
 

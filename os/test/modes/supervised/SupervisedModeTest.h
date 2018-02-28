@@ -10,7 +10,6 @@
 #include <modes/supervised/SupervisedMode.h>
 #include "../../mocks/MockMotorDriver.h"
 #include "../../mocks/MockController.h"
-#include "../../mocks/MockLogger.h"
 #include "../../mocks/MockObstacleSensor.h"
 #include "../../mocks/MockEnvironment.h"
 
@@ -25,8 +24,7 @@ protected:
 
     SupervisedMode supervisedMode;
     MockMotorDriver mockMotorDriver;
-    MockLogger mockLogger;
-    MockController mockController{&mockLogger};
+    MockController mockController;
     MockObstacleSensor obstacleSensor;
 };
 

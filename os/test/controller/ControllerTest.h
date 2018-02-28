@@ -10,7 +10,6 @@
 #include "TestController.h"
 #include "../mocks/MockModeListener.h"
 #include "../mocks/MockControllerCommandListener.h"
-#include "../mocks/MockLogger.h"
 
 class ControllerTest : public ::testing::Test {
 protected:
@@ -18,7 +17,6 @@ protected:
     MockModeListener *mockModeListener;
     MockControllerCommandListener *controllerCommandListener1;
     MockControllerCommandListener *controllerCommandListener2;
-    MockLogger logger;
 
     void SetUp() override;
 

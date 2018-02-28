@@ -18,13 +18,13 @@ public:
 
     ModeName &getModeName();
 
-    const char *getModeNameString();
+    char getModeNameString();
 
     virtual void init()= 0;
 
     virtual void stop()= 0;
 
-    static const char *getModeNameString(ModeName &modeName);
+    static char getModeNameId(ModeName &modeName);
 };
 
 class NoopMode : public Mode {

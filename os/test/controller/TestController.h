@@ -14,8 +14,6 @@ class TestController : public Controller {
 
 public:
 
-    TestController(Logger *logger);
-
     Command readControllerCommand() override;
 
     void setCommand(Command command);

@@ -6,11 +6,10 @@
 #include "PrintState.h"
 
 State *PrintState::execute() {
-    logger.get()->newLine()->logAppend("Hello world");
     return transitionFunction->nextState(EmptyStateValue::EMPTY_STATE_VALUE);
 }
 
-PrintState::PrintState() : logger(LoggerFactory::newLogger("PrintState")) {}
+PrintState::PrintState() {}
 
 
 void PrintState::setTransitionFunction(TransitionFunction<EmptyStateValue> &transitionFunction) {

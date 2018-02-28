@@ -12,28 +12,26 @@ ModeName &Mode::getModeName() {
     return modeName;
 }
 
-const char *Mode::getModeNameString() {
-    return getModeNameString(modeName);
+char Mode::getModeNameString() {
+    return getModeNameId(modeName);
 }
 
-const char *Mode::getModeNameString(ModeName &modeName) {
+char Mode::getModeNameId(ModeName &modeName) {
     switch (modeName) {
         case ModeName::NONE:
-            return "NONE";
+            return '0';
         case ModeName::CALIBRATION:
-            return "CALIBRATION";
+            return '1';
         case ModeName::FREE_RUN:
-            return "FREE_RUN";
+            return '2';
         case ModeName::SUPERVISED:
-            return "SUPERVISED";
+            return '3';
         case ModeName::FIXED_ROUTE:
-            return "FIXED_ROUTE";
+            return '3';
         case ModeName::EXPLORER:
-            return "EXPLORER";
-        case ModeName::TEST:
-            return "TEST";
+            return '5';
         default:
-            return "NotDefined";
+            return '6';
     }
 }
 

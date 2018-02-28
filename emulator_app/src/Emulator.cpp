@@ -13,16 +13,10 @@
 #include <memory/OSMemoryMonitor.h>
 #include "EmulatorEnvironment.h"
 
-
-extern EmulatorEnvironment environment;
-
 void setup() {
     LoggerFactory::setLoggerFactory(new StdOutLoggerFactory);
-
-    EmulatorEnvironment environment = {};
-    Environment::setEnvironment(environment);
+    Environment::setEnvironment(*new EmulatorEnvironment{});
     Environment::getEnvironment().init();
-
     LoggerFactory::newLogger("Main")->newLine()->logAppend("App is started");
 }
 
