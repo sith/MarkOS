@@ -13,6 +13,7 @@ void SupervisedMode::stop() {
     Environment::getEnvironment().getMotorDriver().stop();
     Environment::getEnvironment().getController().removeListener(*this);
     Environment::getEnvironment().getObstacleSensor().removeListener(this);
+    Environment::getEnvironment().getMissionManager().stopMissionRecording();
 }
 
 SupervisedMode::SupervisedMode() : Mode(ModeName::SUPERVISED) {
@@ -49,6 +50,7 @@ SupervisedMode::~SupervisedMode() {
 void SupervisedMode::init() {
     Environment::getEnvironment().getController().addListener(*this);
     Environment::getEnvironment().getObstacleSensor().addListener(this);
+    Environment::getEnvironment().getMissionManager().recordMission();
 }
 
 void SupervisedMode::onEvent(const Obstacle &obstacle) {

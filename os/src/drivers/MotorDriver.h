@@ -28,7 +28,7 @@ class MotorDriverCommandListener {
 public:
     virtual void onEvent(Direction direction, Speed speed)= 0;
 
-    virtual void onStop()= 0;
+    virtual void onMotorStop()= 0;
 };
 
 class MotorDriver {
@@ -52,13 +52,37 @@ public:
     void execute(Direction direction, Speed speed) {
         currentSpeed = speed;
         currentDirection = direction;
+
+        auto pointerToIterator = listeners.get()->iterator();
+        auto iterator = pointerToIterator.get();
+
+        while (iterator->hasNext()) {
+            iterator->next()->onEvent(direction, speed);
+        }
+
         executeInternal(direction, speed);
     }
 
     void stop() {
         currentSpeed = Speed::NONE;
         currentDirection = Direction::NONE;
+
+        auto pointerToIterator = listeners.get()->iterator();
+        auto iterator = pointerToIterator.get();
+
+        while (iterator->hasNext()) {
+            iterator->next()->onMotorStop();
+        }
+
         stopInternal();
+    }
+
+    void addListener(MotorDriverCommandListener *motorDriverCommandListener) {
+        listeners.get()->add(motorDriverCommandListener);
+    }
+
+    void removeListener(MotorDriverCommandListener *motorDriverCommandListener) {
+        listeners.get()->removeByPointer(motorDriverCommandListener);
     }
 };
 

@@ -5,11 +5,12 @@
 #ifndef MARK1_MODENAME_H
 #define MARK1_MODENAME_H
 enum class ModeName {
-    NONE,
+    NONE = 0,
     SUPERVISED,
     FREE_RUN,
     CALIBRATION,
     FIXED_ROUTE,
-    EXPLORER
+    EXPLORER,
+    MISSION_REPLAY
 };
 #endif //MARK1_MODENAME_H

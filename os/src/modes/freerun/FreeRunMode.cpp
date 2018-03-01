@@ -15,11 +15,13 @@ const void FreeRunMode::process() {
 void FreeRunMode::init() {
     Environment::getEnvironment().getObstacleSensor().addListener(this);
     Environment::getEnvironment().getMotorDriver().execute(Direction::FORWARD, Speed::MEDIUM_SPEED);
+    Environment::getEnvironment().getMissionManager().recordMission();
 }
 
 void FreeRunMode::stop() {
     Environment::getEnvironment().getMotorDriver().stop();
     Environment::getEnvironment().getObstacleSensor().removeListener(this);
+    Environment::getEnvironment().getMissionManager().stopMissionRecording();
 }
 
 void FreeRunMode::onEvent(const Obstacle &obstacle) {

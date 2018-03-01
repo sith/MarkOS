@@ -13,6 +13,7 @@
 #include <drivers/EmulatorMotorDriver.h>
 #include <clock/SystemClock.h>
 #include <filesystem/OSFileSystem.h>
+#include <missions/EmulatorMissionManager.h>
 
 class EmulatorEnvironment : public Environment {
     ModeManager modeManager;
@@ -24,8 +25,10 @@ class EmulatorEnvironment : public Environment {
     SystemClock clock;
     OSFileSystem fileSystem;
     Timer timer{&clock};
-
+    EmulatorMissionManager missionManager;
 public:
+    MissionManager &getMissionManager() override;
+
     ModeManager &getModeManager() override;
 
     Cycle &getCycle() override;

@@ -7,15 +7,26 @@
 
 
 #include <memory/Pointer.h>
+#include <types.h>
 
 class File {
 public:
     virtual ~File() {
     }
 
-    virtual int readInt()= 0;
+    virtual int8 readNextInt8()= 0;
 
-    virtual Pointer<const char *> readString()= 0;
+    virtual int16 readNextInt16()= 0;
+
+    virtual char readNextChar()= 0;
+
+    virtual void writeInt8(const int8 number)= 0;
+
+    virtual void writeInt16(const int16 number)= 0;
+
+    virtual void writeChar(const char aChar)= 0;
+
+    virtual void writeString(const char *aChar)= 0;
 };
 
 

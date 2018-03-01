@@ -20,6 +20,9 @@ void ModeManager::onModeChange(ModeName mode) {
             break;
         case ModeName::EXPLORER:
             break;
+        case ModeName::MISSION_REPLAY:
+            initMode(replayMissionMode);
+            break;
         case ModeName::NONE:
             initMode(noopMode);
             break;

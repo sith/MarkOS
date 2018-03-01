@@ -7,36 +7,30 @@
 
 #include "gmock/gmock.h"
 #include "../../src/environment/Environment.h"
-
 class MockEnvironment : public Environment {
 public:
     MOCK_METHOD0(getModeManager,
-                 ModeManager & ());
-
+                 ModeManager&());
     MOCK_METHOD0(getCycle,
-                 Cycle & ());
-
+                 Cycle&());
     MOCK_METHOD0(getTimer,
-                 Timer & ());
-
+                 Timer&());
     MOCK_METHOD0(getController,
-                 Controller & ());
-
+                 Controller&());
     MOCK_METHOD0(getClock,
-                 Clock & ());
-
+                 Clock&());
     MOCK_METHOD0(getMotorDriver,
-                 MotorDriver & ());
-
+                 MotorDriver&());
     MOCK_METHOD0(getObstacleSensor,
-                 ObstacleSensor & ());
-
+                 ObstacleSensor&());
     MOCK_METHOD0(getFileSystem,
-                 FileSystem & ());
-
+                 FileSystem&());
     MOCK_METHOD0(getMemoryMonitor,
-                 MemoryMonitor & ());
+                 MemoryMonitor&());
+    MOCK_METHOD0(getMissionManager,
+                 MissionManager&());
 };
+
 
 
 #endif //MARKOS_MOCKENVIRONMENT_H

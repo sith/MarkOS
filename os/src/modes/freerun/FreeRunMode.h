@@ -11,6 +11,7 @@
 #include <drivers/MotorDriver.h>
 #include <state/State.h>
 #include <state/standard/NoopState.h>
+#include <missions/MissionManager.h>
 
 class FreeRunMode : public Mode, ObstacleListener {
 public:

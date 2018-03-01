@@ -7,6 +7,7 @@
 
 #include <modes/supervised/SupervisedMode.h>
 #include <modes/freerun/FreeRunMode.h>
+#include <modes/missionReplay/ReplayMissionMode.h>
 #include "ModeListener.h"
 #include "../logger/Logger.h"
 
@@ -16,6 +17,7 @@ class ModeManager : public ModeListener {
     NoopMode noopMode;
     SupervisedMode supervisedMode;
     FreeRunMode freeRunMode;
+    ReplayMissionMode replayMissionMode;
 
     void stopCurrentMode();
 

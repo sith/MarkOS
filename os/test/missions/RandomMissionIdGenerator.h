@@ -7,7 +7,7 @@
 
 
 #include <Random.h>
-#include "MissionIdGenerator.h"
+#include "missions/MissionIdGenerator.h"
 
 class RandomMissionIdGenerator : public MissionIdGenerator {
     Random &random;

@@ -27,7 +27,6 @@ public:
     void onEvent(const Obstacle &obstacle) override;
 
     ~SupervisedMode() override;
-
 };
 
 

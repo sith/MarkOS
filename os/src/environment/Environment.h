@@ -47,6 +47,8 @@ public:
 
     virtual MemoryMonitor &getMemoryMonitor()  =0;
 
+    virtual MissionManager &getMissionManager()  =0;
+
     static void setEnvironment(Environment &environment);
 };
 

@@ -11,15 +11,30 @@
 
 class MockFile : public File {
 public:
-    MOCK_METHOD0(readInt, int());
+    MOCK_METHOD0(readNextInt8,
+                 int8());
 
-    MOCK_METHOD0(readString, const char*());
+    MOCK_METHOD0(readNextInt16,
+                 int16());
 
-    MOCK_METHOD1(writeInt, void(int
-            number));
+    MOCK_METHOD0(readNextChar,
+                 char());
 
-    MOCK_METHOD1(writeString, void(
-            const char *string));
+    MOCK_METHOD1(writeInt8,
+                 void(
+                         const int8 number));
+
+    MOCK_METHOD1(writeInt16,
+                 void(
+                         const int16 number));
+
+    MOCK_METHOD1(writeChar,
+                 void(
+                         const char aChar));
+
+    MOCK_METHOD1(writeString,
+                 void(
+                         const char *aChar));
 };
 
 

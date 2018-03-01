@@ -72,6 +72,9 @@ ModeName EmulatorController::findModeName(string &modeNameString) {
     if (modeNameString == "EXPLORER") {
         return ModeName::EXPLORER;
     }
+    if (modeNameString == "MISSION_REPLAY") {
+        return ModeName::MISSION_REPLAY;
+    }
     return ModeName::NONE;
 }
 

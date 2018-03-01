@@ -11,8 +11,21 @@ add_executable(os_tests
         time/MockTimerListener.h
         modes/ModeManagerTest.h
         modes/ModeManagerTest.cpp
-        controller/ControllerTest.cpp controller/ControllerTest.h
-        controller/TestController.cpp controller/TestController.h mocks/MockModeListener.h mocks/MockControllerCommandListener.h mocks/MockController.h mocks/MockRandom.h modes/supervised/SupervisedModeTest.cpp modes/supervised/SupervisedModeTest.h mocks/MockMotorDriver.h mocks/MockObstacleSensor.h mocks/MockEnvironment.h missions/FileSystemMissionManagerTest.cpp missions/FileSystemMissionManagerTest.h missions/MissionIdGenerator.h missions/RandomMissionIdGenerator.cpp missions/RandomMissionIdGenerator.h mocks/MockMissionIdGenerator.h)
+        controller/ControllerTest.cpp
+        controller/ControllerTest.h
+        controller/TestController.cpp
+        controller/TestController.h
+        mocks/MockModeListener.h
+        mocks/MockControllerCommandListener.h
+        mocks/MockController.h
+        mocks/MockRandom.h
+        modes/supervised/SupervisedModeTest.cpp
+        modes/supervised/SupervisedModeTest.h
+        mocks/MockMotorDriver.h mocks/MockObstacleSensor.h
+        mocks/MockEnvironment.h
+        mocks/MockFile.h
+        mocks/MockMissionIdGenerator.h
+        )
 
 target_link_libraries(os_tests emulator_lib)
 

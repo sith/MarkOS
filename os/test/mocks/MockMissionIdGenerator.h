@@ -6,7 +6,7 @@
 #define MARKOS_MOCKMISSIONIDGENERATOR_H
 
 #include "gmock/gmock.h"
-#include "../missions/MissionIdGenerator.h"
+#include "missions/MissionIdGenerator.h"
 
 class MockMissionIdGenerator : public MissionIdGenerator {
 public:

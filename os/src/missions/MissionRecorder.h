@@ -19,7 +19,9 @@ public:
 
     virtual void replay()= 0;
 
-    virtual void stop()= 0;
+    virtual void stopRecord()= 0;
+
+    virtual void stopReplay()= 0;
 
     uint8 getId() const;
 };

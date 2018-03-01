@@ -43,3 +43,7 @@ ModeManager &EmulatorEnvironment::getModeManager() {
 Cycle &EmulatorEnvironment::getCycle() {
     return cycle;
 }
+
+MissionManager &EmulatorEnvironment::getMissionManager() {
+    return missionManager;
+}
