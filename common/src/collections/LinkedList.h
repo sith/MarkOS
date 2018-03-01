@@ -95,6 +95,17 @@ public:
         length++;
     }
 
+    bool contains(T *e) override {
+        auto pointerToIterator = iterator();
+        auto iterator = pointerToIterator.get();
+        while (iterator->hasNext()) {
+            if (iterator->next() == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     int size() override {
         return length;
     }

@@ -145,3 +145,15 @@ TEST(LinkedListTest, removeObjectByPointer) {
     ASSERT_EQ(list.size(), 1);
     ASSERT_EQ(list.get(0), &dummy2);
 }
+
+TEST(LinkedListTest, contains) {
+    int two{2};
+    int five{5};
+
+    LinkedList<int> list;
+
+    list.add(&two);
+
+    ASSERT_TRUE(list.contains(&two));
+    ASSERT_FALSE(list.contains(&five));
+}

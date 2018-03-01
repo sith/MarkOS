@@ -25,6 +25,8 @@ public:
 
     virtual int size()=0;
 
+    virtual bool contains(T *e)=0;
+
     virtual Pointer<Iterator<T>> iterator()=0;
 };
 
