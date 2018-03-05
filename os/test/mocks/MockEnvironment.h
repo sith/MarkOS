@@ -7,6 +7,7 @@
 
 #include "gmock/gmock.h"
 #include "../../src/environment/Environment.h"
+using namespace mark_os::filesystem;
 class MockEnvironment : public Environment {
 public:
     MOCK_METHOD0(getModeManager,

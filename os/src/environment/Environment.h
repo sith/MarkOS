@@ -43,7 +43,7 @@ public:
 
     virtual ObstacleSensor &getObstacleSensor()  = 0;
 
-    virtual FileSystem &getFileSystem()  = 0;
+    virtual mark_os::filesystem::FileSystem &getFileSystem()  = 0;
 
     virtual MemoryMonitor &getMemoryMonitor()  =0;
 

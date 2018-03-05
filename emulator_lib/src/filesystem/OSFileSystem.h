@@ -8,6 +8,7 @@
 
 #include <filesystem/FileSystem.h>
 
+using namespace mark_os::filesystem;
 class OSFileSystem : public FileSystem {
     Pointer<File> openFile(const char *path) override;
 

@@ -14,6 +14,7 @@
 #include <clock/SystemClock.h>
 #include <filesystem/OSFileSystem.h>
 #include <missions/EmulatorMissionManager.h>
+#include <missions/InMemoryMissionManager.h>
 
 class EmulatorEnvironment : public Environment {
     ModeManager modeManager;
@@ -25,7 +26,7 @@ class EmulatorEnvironment : public Environment {
     SystemClock clock;
     OSFileSystem fileSystem;
     Timer timer{&clock};
-    EmulatorMissionManager missionManager;
+    InMemoryMissionManager missionManager{motorDriver, timer, clock};
 public:
     MissionManager &getMissionManager() override;
 
@@ -43,7 +44,7 @@ public:
 
     ObstacleSensor &getObstacleSensor() override;
 
-    FileSystem &getFileSystem() override;
+    mark_os::filesystem::FileSystem &getFileSystem() override;
 
     MemoryMonitor &getMemoryMonitor() override;
 

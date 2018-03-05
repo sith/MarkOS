@@ -50,12 +50,13 @@ add_library(${PROJECT_NAME}
         src/state/standard/ConditionalState.cpp
         src/state/standard/ConditionalState.h
         src/state/State.cpp
-        src/missions/MissionRecorder.h
-        src/missions/MissionRecorder.cpp
         src/memory/MemoryMonitor.h src/types.h
         src/missions/MissionManager.h
+        src/missions/InMemoryMissionManager.h
+        src/missions/InMemoryMissionManager.cpp
         src/constants.h
-        src/modes/missionReplay/ReplayMissionMode.cpp src/modes/missionReplay/ReplayMissionMode.h)
+        src/modes/missionReplay/ReplayMissionMode.cpp
+        src/modes/missionReplay/ReplayMissionMode.h)
 target_link_libraries(${PROJECT_NAME} LINK_PUBLIC common)
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 add_subdirectory(test)

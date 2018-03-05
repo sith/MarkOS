@@ -25,7 +25,7 @@ add_executable(os_tests
         mocks/MockEnvironment.h
         mocks/MockFile.h
         mocks/MockMissionIdGenerator.h
-        )
+        missions/InMemoryMissionManagerTest.cpp missions/InMemoryMissionManagerTest.h)
 
 target_link_libraries(os_tests emulator_lib)
 

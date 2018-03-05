@@ -8,6 +8,7 @@
 #include <modes/supervised/SupervisedMode.h>
 #include <modes/freerun/FreeRunMode.h>
 #include <modes/missionReplay/ReplayMissionMode.h>
+#include <logger/LoggerFactory.h>
 #include "ModeListener.h"
 #include "../logger/Logger.h"
 
@@ -19,6 +20,9 @@ class ModeManager : public ModeListener {
     FreeRunMode freeRunMode;
     ReplayMissionMode replayMissionMode;
 
+
+    Logger *logger = LoggerFactory::newLogger("ModeManager");
+    
     void stopCurrentMode();
 
 public:

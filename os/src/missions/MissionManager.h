@@ -7,7 +7,6 @@
 
 
 #include <memory/Pointer.h>
-#include "MissionRecorder.h"
 #include "../types.h"
 
 class MissionManager {

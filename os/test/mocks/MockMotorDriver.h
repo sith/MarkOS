@@ -17,6 +17,14 @@ public:
 
     MOCK_METHOD0(stopInternal,
                  void());
+
+    MOCK_METHOD2(execute,
+                 void(Direction
+                         direction, Speed
+                         speed));
+
+    MOCK_METHOD0(stop,
+                 void());
 };
 
 
